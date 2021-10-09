@@ -29,9 +29,13 @@ def set_alive(data):
     data.loc[alive_no, "ALIVE"] = False
     index_dead_from_date = data[(data["DATE.DEATH"] - data["DATE.INDUC"]).apply(lambda x: x.days < 30)].index
 
-    index_dead_from_date = data.loc[index_dead_from_date][data.loc[index_dead_from_date, "ALIVE.J30"].apply(lambda x: pd.isna(x))].index
+    index_dead_from_date = data.loc[index_dead_from_date][
+        data.loc[index_dead_from_date, "ALIVE.J30"].apply(lambda x: pd.isna(x))
+    ].index
     index_alive_from_date = data[(data["DATE.DEATH"] - data["DATE.INDUC"]).apply(lambda x: x.days >= 30)].index
-    index_alive_from_date = data.loc[index_alive_from_date][data.loc[index_alive_from_date, "ALIVE.J30"].apply(lambda x: pd.isna(x))].index
+    index_alive_from_date = data.loc[index_alive_from_date][
+        data.loc[index_alive_from_date, "ALIVE.J30"].apply(lambda x: pd.isna(x))
+    ].index
     print(f"We found an addition of {len(index_dead_from_date)} dead patients from their date information")
     print(f"We found an addition of {len(index_alive_from_date)} living patients from their date information")
     data.loc[index_dead_from_date, "ALIVE"] = False
@@ -83,7 +87,16 @@ patients_male = patients[patients["SEXE"] == "Male"]
 patients_female = patients[patients["SEXE"] == "Female"]
 
 ax = patients_male.plot.scatter(x="HEMOGLOBINE_PREOP", y="DEAD", label="Male", c="blue")
-patients_female.plot.scatter(x="HEMOGLOBINE_PREOP", y="DEAD", ax=ax, c="orange", label="Female", marker="x", ylabel="ALIVE                DEAD", xlabel="Hb (g/dL)")
+patients_female.plot.scatter(
+    x="HEMOGLOBINE_PREOP",
+    y="DEAD",
+    ax=ax,
+    c="orange",
+    label="Female",
+    marker="x",
+    ylabel="ALIVE                DEAD",
+    xlabel="Hb (g/dL)",
+)
 plt.axvline(13, c="blue")
 plt.axvline(12, c="orange")
 ax.get_yaxis().set_ticks([])
