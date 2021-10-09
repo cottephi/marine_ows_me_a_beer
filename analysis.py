@@ -5,11 +5,46 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
-columns = ["SEXE", "HEMOGLOBINE_PREOP", "DATE.INDUC", "DATE.DEATH", "INHOSPITAL.death", "ALIVE.J30"]
+columns_sexe = ["SEXE"]
+
+column_hb = ["HEMOGLOBINE_PREOP"]
+
+columns_dates = ["DATE.INDUC", "DATE.DEATH"]
+
+column_alive = ["ALIVE.J30"]
+
+columns_compl = [
+    "COMP.PULM",
+    "COMP.CARDIAC",
+    "COMP.AKI",
+    "COMP.ACR",
+    "COMP.PULM",
+    "NSQ_Cardiac.arrest",
+    "NSQ_Myocardial.infarction",
+    "NSQ_Pneumonia",
+    "NSQ_Pulmory.embolism",
+    "NSQ_intubation",
+    "NSQ_Ventilator.48h",
+    "NSQ_Return.operating.room",
+    "NSQ_Stroke",
+    "NSQ_AKI",
+    "NSQ_Deep.vein.thrombosis",
+    "NSQ_Venous.thromboembolism",
+    "NSQ_superf.surgical.site.infection",
+    "NSQ_Deep.surgical.site.infection",
+    "NSQ_Wound.disruption",
+    "NSQ_Organ.space.SSI",
+    "NSQ_Systemic.sepsis",
+    "NSQ_Uriry.tract.infection",
+]
+
+column_transf = ["CGR.bin"]
+
+all_columns = column_transf + column_hb + columns_compl + column_alive + columns_sexe + columns_dates
 
 
 def get_data():
-    data = pd.read_csv("POSE.csv", index_col=0, parse_dates=["DATE.INDUC", "DATE.DEATH"]).loc[:, columns]
+    data = pd.read_csv("POSE.csv", index_col=0, parse_dates=columns_dates).loc[:, all_columns]
     print(f"There are {len(data)} patients")
     data = data.replace("OUI", True)
     data = data.replace("NON", False)
@@ -56,23 +91,39 @@ def set_alive(data):
 
 
 def set_anemia(data):
-    data["ANEMIE"] = pd.Series(0, index=data.index)
+    data["ANEMIE"] = pd.Series(False, index=data.index)
     idx_female = data[data["SEXE"] == "Female"].index
     idx_male = data[data["SEXE"] == "Male"].index
     anemique_female_index = data.loc[idx_female].loc[(data.loc[idx_female, "HEMOGLOBINE_PREOP"] < 12.0).values].index
     anemique_male_index = data.loc[idx_male].loc[(data.loc[idx_male, "HEMOGLOBINE_PREOP"] < 13.0).values].index
     print(f"There are {len(anemique_female_index) + len(anemique_male_index)} anaemic patients")
-    data.loc[anemique_female_index, "ANEMIE"] = 1
-    data.loc[anemique_male_index, "ANEMIE"] = 1
+    data.loc[anemique_female_index, "ANEMIE"] = True
+    data.loc[anemique_male_index, "ANEMIE"] = True
     return data
 
 
-def get_fischer_df(data):
-    fischer = pd.DataFrame(columns=["Alive", "Dead"], index=["Anaemic", "Not Anaemic"])
-    fischer.loc["Not Anaemic", "Dead"] = len(data.loc[((data["ALIVE"] == 0) & (data["ANEMIE"] == 0)).values])
-    fischer.loc["Anaemic", "Dead"] = len(data.loc[((data["ALIVE"] == 0) & (data["ANEMIE"] == 1)).values])
-    fischer.loc["Anaemic", "Alive"] = len(data.loc[((data["ALIVE"] == 1) & (data["ANEMIE"] == 1)).values])
-    fischer.loc["Not Anaemic", "Alive"] = len(data.loc[((data["ALIVE"] == 1) & (data["ANEMIE"] == 0)).values])
+def set_compl(data):
+    data["COMPL"] = pd.Series(False, index=data.index)
+    idx = data[(data[columns_compl].any(axis=1)) & (data["ALIVE"] == 1)].index
+    print(f"There are {len(idx)} living patients with at least one POST-OP complication")
+    data.loc[idx, "COMPL"] = True
+    return data
+
+
+def set_dead_or_compl(data):
+    data["DEAD_OR_COMPL"] = pd.Series(False, index=data.index)
+    idx = data[(data["COMPL"] == 1) | (data["ALIVE"] == 0)].index
+    print(f"There are {len(idx)} patients dead or with at least one POST-OP complication")
+    data.loc[idx, "DEAD_OR_COMPL"] = True
+    return data
+
+
+def get_fischer_df(data, col_to_test, names):
+    fischer = pd.DataFrame(columns=names, index=["Anaemic", "Not Anaemic"])
+    fischer.loc["Not Anaemic", names[1]] = len(data.loc[((data[col_to_test] == 0) & (data["ANEMIE"] == 0)).values])
+    fischer.loc["Anaemic", names[1]] = len(data.loc[((data[col_to_test] == 0) & (data["ANEMIE"] == 1)).values])
+    fischer.loc["Anaemic", names[0]] = len(data.loc[((data[col_to_test] == 1) & (data["ANEMIE"] == 1)).values])
+    fischer.loc["Not Anaemic", names[0]] = len(data.loc[((data[col_to_test] == 1) & (data["ANEMIE"] == 0)).values])
     return fischer
 
 
@@ -86,14 +137,42 @@ def fit(data):
     return score, predict
 
 
-patients = set_anemia(set_alive(get_data()))
+patients = set_dead_or_compl(set_compl(set_anemia(set_alive(get_data()))))
 
-df = get_fischer_df(patients)
-print(df)
+"""
+Fisher Exact Tests
+"""
 
-onetail_p, twotail_p = stats.fisher_exact(df)
+# Anemia vs Dead
 
-print(f"Fischer Exact Test : One tail P-value: {onetail_p}. Two-tail P-value {twotail_p}")
+fischer_alive = get_fischer_df(patients, "ALIVE", ["ALIVE", "DEAD"])
+print(fischer_alive)
+
+onetail_p_alive, twotail_p_alive = stats.fisher_exact(fischer_alive)
+
+print(f"Fischer Exact Test of Dead vs Anemia : One tail P-value: {onetail_p_alive}. Two-tail P-value {twotail_p_alive}")
+
+# Anemia vs Complications
+
+fischer_compl = get_fischer_df(patients, "COMPL", ["COMPL", "NO COMPL"])
+print(fischer_compl)
+
+onetail_p_compl, twotail_p_compl = stats.fisher_exact(fischer_compl)
+
+print(
+    f"Fischer Exact Test of Complications vs Anemia : One tail P-value: {onetail_p_compl}. Two-tail P-value {twotail_p_compl}"
+)
+
+# Anemia vs Dead or Complications
+
+fischer_dead_or_compl = get_fischer_df(patients, "DEAD_OR_COMPL", ["DEAD OR COMPL", "ALIVE AND NO COMPL"])
+print(fischer_dead_or_compl)
+
+onetail_p_dead_or_compl, twotail_p_dead_or_compl = stats.fisher_exact(fischer_dead_or_compl)
+
+print(
+    f"Fischer Exact Test of Dead or complications vs Anemia : One tail P-value: {onetail_p_dead_or_compl}. Two-tail P-value {twotail_p_dead_or_compl}"
+)
 
 patients_male = patients[patients["SEXE"] == "Male"][["HEMOGLOBINE_PREOP", "DEAD"]]
 patients_female = patients[patients["SEXE"] == "Female"][["HEMOGLOBINE_PREOP", "DEAD"]]

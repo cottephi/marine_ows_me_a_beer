@@ -20,16 +20,28 @@ Total : 1239 alive and 39 dead
 
 There are 544 anaemic patients
 
+There are 215 living patients with at least one POST-OP complication
+
+There are 220 patients dead or with at least one POST-OP complication
+
 |             | Alive     | Dead |
 |-------------|-----------|------|
 | Anaemic     | 517       | 27   |
 | Not Anaemic | 722       | 12   |
+| one/two -tail P-value   | 0.32 | 8.2x10<sup>-4</sup> |
 
-Fischer Exact Test :
+|             | Complications     | Alive and well |
+|-------------|-----------|------|
+| Anaemic     | 106       | 438   |
+| Not Anaemic | 75        | 659   |
+| one/two -tail P-value   | 2.1 | 3.3x10<sup>-6</sup> |
 
-One tail P-value: 0.3182517697753155.
+|             | Dead or complications     | Alive and well |
+|-------------|-----------|------|
+| Anaemic     | 133       | 411   |
+| Not Anaemic | 87       | 647   |
+| one/two -tail P-value | 2.4 | 5.8x10<sup>-9</sup> |
 
-Two-tail P-value 0.0008215042880302882
 
 ## Logistic regression
 
