@@ -2,6 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import scipy.stats as stats
 import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
 
 columns = ["SEXE", "HEMOGLOBINE_PREOP", "DATE.INDUC", "DATE.DEATH", "INHOSPITAL.death", "ALIVE.J30"]
 
@@ -74,6 +76,16 @@ def get_fischer_df(data):
     return fischer
 
 
+def fit(data):
+    x_train, x_test, y_train, y_test = train_test_split(data[["HEMOGLOBINE_PREOP"]], data["DEAD"], train_size=0.9)
+
+    model = LogisticRegression()
+    model.fit(x_train, y_train)
+    score = round(model.score(x_test, y_test), 3)
+    predict = model.predict_proba(data[["HEMOGLOBINE_PREOP"]].sort_values(by="HEMOGLOBINE_PREOP"))[:, 1]
+    return score, predict
+
+
 patients = set_anemia(set_alive(get_data()))
 
 df = get_fischer_df(patients)
@@ -83,8 +95,11 @@ onetail_p, twotail_p = stats.fisher_exact(df)
 
 print(f"Fischer Exact Test : One tail P-value: {onetail_p}. Two-tail P-value {twotail_p}")
 
-patients_male = patients[patients["SEXE"] == "Male"]
-patients_female = patients[patients["SEXE"] == "Female"]
+patients_male = patients[patients["SEXE"] == "Male"][["HEMOGLOBINE_PREOP", "DEAD"]]
+patients_female = patients[patients["SEXE"] == "Female"][["HEMOGLOBINE_PREOP", "DEAD"]]
+
+score_male, predict_male = fit(patients_male)
+score_female, predict_female = fit(patients_female)
 
 ax = patients_male.plot.scatter(x="HEMOGLOBINE_PREOP", y="DEAD", label="Male", c="blue")
 patients_female.plot.scatter(
@@ -99,7 +114,20 @@ patients_female.plot.scatter(
 )
 plt.axvline(13, c="blue")
 plt.axvline(12, c="orange")
-ax.get_yaxis().set_ticks([])
+plt.plot(
+    patients_male["HEMOGLOBINE_PREOP"].sort_values(),
+    predict_male,
+    ls="--",
+    c="blue",
+    label=f"Male model\n(score={score_male})",
+)
+plt.plot(
+    patients_female["HEMOGLOBINE_PREOP"].sort_values(),
+    predict_female,
+    ls="-.",
+    c="orange",
+    label=f"Female model\n(score={score_female})",
+)
 plt.legend(loc="right")
 plt.savefig("death_vs_hb.pdf")
 plt.savefig("death_vs_hb.png")
