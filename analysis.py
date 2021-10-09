@@ -83,9 +83,10 @@ patients_male = patients[patients["SEXE"] == "Male"]
 patients_female = patients[patients["SEXE"] == "Female"]
 
 ax = patients_male.plot.scatter(x="HEMOGLOBINE_PREOP", y="DEAD", label="Male", c="blue")
-patients_female.plot.scatter(x="HEMOGLOBINE_PREOP", y="DEAD", ax=ax, c="orange", label="Female", marker="x", ylabel="ALIVE                DEAD")
+patients_female.plot.scatter(x="HEMOGLOBINE_PREOP", y="DEAD", ax=ax, c="orange", label="Female", marker="x", ylabel="ALIVE                DEAD", xlabel="Hb (g/dL)")
 plt.axvline(13, c="blue")
 plt.axvline(12, c="orange")
 ax.get_yaxis().set_ticks([])
 plt.legend(loc="right")
 plt.savefig("death_vs_hb.pdf")
+plt.savefig("death_vs_hb.png")
