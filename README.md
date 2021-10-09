@@ -1,6 +1,6 @@
 # Marine ows me a beer
 
-## Exact Fisher Test
+## Exact Fischer Test
 
 There are 2252 patients
 
