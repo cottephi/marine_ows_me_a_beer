@@ -175,7 +175,7 @@ def get_fischer_df(
     pdf_.add_table(TableWriter(data=fischer))
 
     onetail_p, twotail_p = stats.fisher_exact(fischer)
-    pvals.loc[index_names[0]] = [onetail_p, twotail_p]
+    pvals.loc[column_names[0]] = [onetail_p, twotail_p]
 
     print(f"Fischer Exact Test of {col_y} vs {col_x} : One tail P-value: {onetail_p}. Two-tail P-value {twotail_p}")
 
@@ -250,10 +250,15 @@ def format_x(x):
     if x > 0.01:
         return str(round(x, 2))
     xstr = "{:.4E}".format(x)
-    lead, tail = xstr.split("E-")
+    if "E-" in xstr:
+        lead, tail = xstr.split("E-")
+        middle = "-"
+    else:
+        lead, tail = xstr.split("E")
+        middle = ""
     while tail.startswith("0"):
         tail = tail[1:]
-    xstr = "$\\times 10^{-".join([lead, tail]) + "}$"
+    xstr = ("$\\times 10^{" + middle).join([lead, tail]) + "}$"
     if x < 0.05:
         xstr = "\\textcolor{Green}{" + xstr + "}"
     return xstr
@@ -261,8 +266,10 @@ def format_x(x):
 
 patients = set_dead_or_compl(set_compl(set_anemia(set_alive(get_data()))))
 
-df_pvalues = pd.DataFrame(columns=["One-tail P-value", "Two-tail P-value"])
-df_pvalues.index.name = "vs Anemia"
+df_pvalues_anemia = pd.DataFrame(columns=["One-tail P-value", "Two-tail P-value"])
+df_pvalues_anemia.index.name = "vs Anemia"
+df_pvalues_transfu = pd.DataFrame(columns=["One-tail P-value", "Two-tail P-value"])
+df_pvalues_transfu.index.name = "vs Transfusion"
 pdf_anemia = PdfFactory("tables_hb.pdf")
 pdf_transfu = PdfFactory("tables_transfu.pdf")
 
@@ -271,16 +278,16 @@ Fisher Exact Tests
 """
 
 # Dead vs Anemia
-get_fischer_df(patients, df_pvalues, "ANEMIE", "DEAD", ["Anaemic", "Not Anaemic"], ["Dead", "Alive"], pdf_anemia)
+get_fischer_df(patients, df_pvalues_anemia, "ANEMIE", "DEAD", ["Anaemic", "Not Anaemic"], ["Dead", "Alive"], pdf_anemia)
 # Dead vs Transfusion
 get_fischer_df(
-    patients, df_pvalues, column_transf[0], "DEAD", ["Transfusion", "No Transfusion"], ["Dead", "Alive"], pdf_transfu
+    patients, df_pvalues_transfu, column_transf[0], "DEAD", ["Transfusion", "No Transfusion"], ["Dead", "Alive"], pdf_transfu
 )
 
 # Complications vs Anemia
 get_fischer_df(
     patients,
-    df_pvalues,
+    df_pvalues_anemia,
     "ANEMIE",
     "COMPL",
     ["Anaemic", "Not Anaemic"],
@@ -290,7 +297,7 @@ get_fischer_df(
 # Complications vs Transfusion
 get_fischer_df(
     patients,
-    df_pvalues,
+    df_pvalues_transfu,
     column_transf[0],
     "COMPL",
     ["Transfusion", "No Transfusion"],
@@ -301,7 +308,7 @@ get_fischer_df(
 # Dead or Complications vs Anemia
 get_fischer_df(
     patients,
-    df_pvalues,
+    df_pvalues_anemia,
     "ANEMIE",
     "DEAD_OR_COMPL",
     ["Anaemic", "Not Anaemic"],
@@ -311,7 +318,7 @@ get_fischer_df(
 # Dead or Complications vs Transfusion
 get_fischer_df(
     patients,
-    df_pvalues,
+    df_pvalues_transfu,
     column_transf[0],
     "DEAD_OR_COMPL",
     ["Transfusion", "No Transfusion"],
@@ -323,7 +330,7 @@ for compl in columns_compl:
     # One complication vs Anemia
     get_fischer_df(
         patients,
-        df_pvalues,
+        df_pvalues_anemia,
         "ANEMIE",
         compl,
         ["Anaemic", "Not Anaemic"],
@@ -333,7 +340,7 @@ for compl in columns_compl:
     # One complication vs Transfusion
     get_fischer_df(
         patients,
-        df_pvalues,
+        df_pvalues_transfu,
         column_transf[0],
         compl,
         ["Transfusion", "No Transfusion"],
@@ -341,10 +348,11 @@ for compl in columns_compl:
         pdf_transfu,
     )
 
-df_pvalues = df_pvalues.applymap(format_x).astype(str)
-writer = TableWriter("table.pdf", data=df_pvalues)
+df_pvalues_anemia = df_pvalues_anemia.applymap(format_x).astype(str)
+df_pvalues_transfu = df_pvalues_transfu.applymap(format_x).astype(str)
 
-pdf_anemia.add_table(writer)
+pdf_anemia.add_table(TableWriter(data=df_pvalues_anemia))
+pdf_transfu.add_table(TableWriter(data=df_pvalues_transfu))
 
 """
 Logistic Regressions
