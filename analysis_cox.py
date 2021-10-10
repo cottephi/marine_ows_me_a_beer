@@ -10,7 +10,7 @@ from functions import (
     set_fragility,
     set_severity,
     set_prog,
-    init_cox
+    fill_cox
 )
 
 patients = get_data()
@@ -25,4 +25,15 @@ set_ag(patients)
 set_severity(patients)
 set_prog(patients)
 
-df_cox = init_cox()
+df_cox = fill_cox(patients)
+print(df_cox.to_string())
+df_cox.to_csv("cox_filled.csv")
+
+patients = patients[~patients["DEAD_DAYS"].isna()]
+
+df_cox_date_only = fill_cox(patients)
+print(df_cox_date_only.to_string())
+df_cox_date_only.to_csv("cox_date_only_filled.csv")
+
+
+

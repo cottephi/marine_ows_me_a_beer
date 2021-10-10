@@ -13,6 +13,7 @@ We found an addition of **0** living patients from their date information
 
 Total : **1984** alive, **42** dead, **226** without information 
 
+There are **41** patients with death date information
 There are **2211** patients with no death date information 
 
 There are **544** anaemic patients.
@@ -33,7 +34,7 @@ There are **226** patients with no General Anaesthesis information
 
 There are **226** patients with no chir. severity information 
 
-There are **226** patients with information about operation programmation 
+There are **226** patients with no information about operation programmation 
 
 
 ## Exact Fischer Test : death/complications vs anemia or transfusion

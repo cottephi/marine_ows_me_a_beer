@@ -1,7 +1,7 @@
 ,,Mortalité J30,Mortalité J30,Mortalité J30,Mortalité J30,Complications J30,Complications J30,Complications J30,Complications J30
-,,Anemie,Pas d'anemie,Hazard Ratio IC 95%,P value,Anemie,Pas d'anemie,Hazard Ratio IC 95%,P value
-Age,80-85,,,,,,,,
-Age,85-90,,,,,,,,
+,,Anémie,Pas d'anémie,Hazard Ratio IC 95%,P value,Anémie,Pas d'anémie,Hazard Ratio IC 95%,P value
+Age,80-84,,,,,,,,
+Age,85-89,,,,,,,,
 Age,>90,,,,,,,,
 Anesthesie,AG,,,,,,,,
 Anesthesie,Autre,,,,,,,,

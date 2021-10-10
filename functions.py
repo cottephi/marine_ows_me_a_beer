@@ -96,7 +96,7 @@ def set_fragility(data: pd.DataFrame):
 
 
 def set_prog(data: pd.DataFrame):
-    """Will add the column 'PROG', containing 1 if the surgery was programmed, else 0, np.nan if unknown"""
+    """Will add the column 'URGENTE', containing 1 if the surgery was programmed, else 0, np.nan if unknown"""
 
     def f(x: str):
         if not isinstance(x, str):
@@ -108,15 +108,19 @@ def set_prog(data: pd.DataFrame):
             return 1
         return 0
 
-    data.loc[:, "PROG"] = data.loc[:, column_prog[0]].apply(f)
+    data.loc[:, "URGENTE"] = data.loc[:, column_prog[0]].apply(f)
     printline(
-        f"There are {len(data[data[column_prog[0]].isna()])} patients with information about operation programmation"
+        f"There are {len(data[data[column_prog[0]].isna()])} patients with no information about operation programmation"
     )
 
 
 def set_time_of_death(data: pd.DataFrame):
     """Will add the column 'DEAD_DAYS', which is the number of days between the patient induction and death."""
     data.loc[:, "DEAD_DAYS"] = (data[columns_dates[1]] - data[columns_dates[0]]).apply(lambda x: x.days)
+    print(
+        f"There are {len(data[~data[columns_dates[0]].isna() & ~data[columns_dates[1]].isna()])} patients with"
+        " death date information"
+    )
     printline(
         f"There are {len(data[data[columns_dates[0]].isna() | data[columns_dates[1]].isna()])} patients with no"
         " death date information"
@@ -334,7 +338,268 @@ def format_x(x):
 
 
 def init_cox():
-    return pd.read_csv("cox_empty.csv", index_col=[0, 1], header=[0, 1])
+    df = pd.read_csv("cox_empty.csv", header=None)
+    df = df.set_index([df.columns[0], df.columns[1]])
+    df.columns = pd.MultiIndex.from_arrays([df.iloc[0], df.iloc[1]])
+    df = df.iloc[1:]
+    idx = list(df.index)
+    idx[0] = ("", "Total")
+    df.index = pd.MultiIndex.from_tuples(idx)
+    df.iloc[0] = np.nan
+    df.index.names = ["", ""]
+    df.columns.names = ["", ""]
+    return df
+
+
+def fill_cox(data):
+
+    df_cox = init_cox()
+
+    """ Age """
+
+    # Dead anaemic
+    df_cox.loc[("", "Total"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+
+    df_cox.loc[("Age", "80-84"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["BINNED_AGE"] == 0) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Age", "85-89"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["BINNED_AGE"] == 1) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Age", ">90"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["BINNED_AGE"] == 2) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+
+    # Dead not anaemic
+    df_cox.loc[("", "Total"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+
+    df_cox.loc[("Age", "80-84"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["BINNED_AGE"] == 0) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Age", "85-89"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["BINNED_AGE"] == 1) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Age", ">90"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["BINNED_AGE"] == 2) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+
+    # Complications or dead anaemic
+    df_cox.loc[("", "Total"), ("Complications J30", "Anémie")] = len(
+        data[(data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+
+    df_cox.loc[("Age", "80-84"), ("Complications J30", "Anémie")] = len(
+        data[(data["BINNED_AGE"] == 0) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Age", "85-89"), ("Complications J30", "Anémie")] = len(
+        data[(data["BINNED_AGE"] == 1) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Age", ">90"), ("Complications J30", "Anémie")] = len(
+        data[(data["BINNED_AGE"] == 2) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+
+    # Complications or dead not anaemic
+    df_cox.loc[("", "Total"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+
+    df_cox.loc[("Age", "80-84"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["BINNED_AGE"] == 0) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Age", "85-89"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["BINNED_AGE"] == 1) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Age", ">90"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["BINNED_AGE"] == 2) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+
+    """ AG """
+
+    # Dead anaemic
+    df_cox.loc[("Anesthesie", "AG"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["AG"] == 1) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Anesthesie", "Autre"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["AG"] == 0) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+
+    # Dead not anaemic
+    df_cox.loc[("Anesthesie", "AG"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["AG"] == 1) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Anesthesie", "Autre"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["AG"] == 0) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+
+    # Complications or dead anaemic
+    df_cox.loc[("Anesthesie", "AG"), ("Complications J30", "Anémie")] = len(
+        data[(data["AG"] == 1) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Anesthesie", "Autre"), ("Complications J30", "Anémie")] = len(
+        data[(data["AG"] == 0) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+
+    # Complications or dead not anaemic
+    df_cox.loc[("Anesthesie", "AG"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["AG"] == 1) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Anesthesie", "Autre"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["AG"] == 0) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+
+    """ Prog """
+
+    # Dead anaemic
+    df_cox.loc[("Type chirurgie", "Urgente"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["URGENTE"] == 1) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Type chirurgie", "Programmee"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["URGENTE"] == 0) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+
+    # Dead not anaemic
+    df_cox.loc[("Type chirurgie", "Urgente"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["URGENTE"] == 1) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Type chirurgie", "Programmee"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["URGENTE"] == 0) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+
+    # Complications or dead anaemic
+    df_cox.loc[("Type chirurgie", "Urgente"), ("Complications J30", "Anémie")] = len(
+        data[(data["URGENTE"] == 1) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Type chirurgie", "Programmee"), ("Complications J30", "Anémie")] = len(
+        data[(data["URGENTE"] == 0) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+
+    # Complications or dead not anaemic
+    df_cox.loc[("Type chirurgie", "Urgente"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["URGENTE"] == 1) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Type chirurgie", "Programmee"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["URGENTE"] == 0) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+
+    """ Severity """
+
+    # Dead anaemic
+    df_cox.loc[("Severite chirurgie", "Majeure"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["SEVERITY"] == 2) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Severite chirurgie", "Intermediaire"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["SEVERITY"] == 1) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Severite chirurgie", "Mineure"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["SEVERITY"] == 0) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+
+    # Dead not anaemic
+    df_cox.loc[("Severite chirurgie", "Majeure"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["SEVERITY"] == 2) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Severite chirurgie", "Intermediaire"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["SEVERITY"] == 1) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Severite chirurgie", "Mineure"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["SEVERITY"] == 0) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+
+    # Complications or dead anaemic
+    df_cox.loc[("Severite chirurgie", "Majeure"), ("Complications J30", "Anémie")] = len(
+        data[(data["SEVERITY"] == 2) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Severite chirurgie", "Intermediaire"), ("Complications J30", "Anémie")] = len(
+        data[(data["SEVERITY"] == 1) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Severite chirurgie", "Mineure"), ("Complications J30", "Anémie")] = len(
+        data[(data["SEVERITY"] == 0) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+
+    # Complications or dead not anaemic
+    df_cox.loc[("Severite chirurgie", "Majeure"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["SEVERITY"] == 2) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Severite chirurgie", "Intermediaire"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["SEVERITY"] == 1) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Severite chirurgie", "Mineure"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["SEVERITY"] == 0) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+
+    """ Fragility """
+
+    # Dead anaemic
+    df_cox.loc[("Fragilite", "Presence"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["FRAGILE"] == 1) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Fragilite", "Absence"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["FRAGILE"] == 0) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+
+    # Dead not anaemic
+    df_cox.loc[("Fragilite", "Presence"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["FRAGILE"] == 1) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("Fragilite", "Absence"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["FRAGILE"] == 0) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+
+    # Complications or dead anaemic
+    df_cox.loc[("Fragilite", "Presence"), ("Complications J30", "Anémie")] = len(
+        data[(data["FRAGILE"] == 1) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Fragilite", "Absence"), ("Complications J30", "Anémie")] = len(
+        data[(data["FRAGILE"] == 0) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+
+    # Complications or dead not anaemic
+    df_cox.loc[("Fragilite", "Presence"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["FRAGILE"] == 1) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("Fragilite", "Absence"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["FRAGILE"] == 0) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+
+    """ IRA """
+
+    # Dead anaemic
+    df_cox.loc[("IRA", "Presence"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["IRA"] == 1) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("IRA", "Absence"), ("Mortalité J30", "Anémie")] = len(
+        data[(data["IRA"] == 0) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
+    )
+
+    # Dead not anaemic
+    df_cox.loc[("IRA", "Presence"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["IRA"] == 1) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+    df_cox.loc[("IRA", "Absence"), ("Mortalité J30", "Pas d'anémie")] = len(
+        data[(data["IRA"] == 0) & (data["ANEMIE"] == 0) & (data["DEAD"] == 1)]
+    )
+
+    # Complications or dead anaemic
+    df_cox.loc[("IRA", "Presence"), ("Complications J30", "Anémie")] = len(
+        data[(data["IRA"] == 1) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("IRA", "Absence"), ("Complications J30", "Anémie")] = len(
+        data[(data["IRA"] == 0) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
+    )
+
+    # Complications or dead not anaemic
+    df_cox.loc[("IRA", "Presence"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["IRA"] == 1) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+    df_cox.loc[("IRA", "Absence"), ("Complications J30", "Pas d'anémie")] = len(
+        data[(data["IRA"] == 0) & (data["ANEMIE"] == 0) & (data["COMPL"] == 1)]
+    )
+
+    return df_cox
 
 
 alpha = 0.05  # P-value limit
