@@ -1,64 +1,22 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import scipy.stats as stats
+from typing import List, Union, Tuple
+
 import numpy as np
-from tablewriter import TableWriter
-from typing import List, Tuple, Union
+import pandas as pd
+from matplotlib import pyplot as plt
 from pdffactory import PdfFactory
-from sklearn.model_selection import train_test_split
+from scipy import stats as stats
 from sklearn.linear_model import LogisticRegression
-
-"""
-Define meaningful columns
-"""
-
-columns_sexe = ["SEXE"]
-
-column_hb = ["HEMOGLOBINE_PREOP"]
-
-columns_dates = ["DATE.INDUC", "DATE.DEATH"]
-
-column_alive = ["ALIVE.J30"]
-
-columns_compl = [
-    "COMP.PULM",
-    "COMP.CARDIAC",
-    "COMP.AKI",
-    "COMP.ACR",
-    "COMP.PULM",
-    "NSQ_Cardiac.arrest",
-    "NSQ_Myocardial.infarction",
-    "NSQ_Pneumonia",
-    "NSQ_Pulmory.embolism",
-    "NSQ_intubation",
-    "NSQ_Ventilator.48h",
-    "NSQ_Return.operating.room",
-    "NSQ_Stroke",
-    "NSQ_AKI",
-    "NSQ_Deep.vein.thrombosis",
-    "NSQ_Venous.thromboembolism",
-    "NSQ_superf.surgical.site.infection",
-    "NSQ_Deep.surgical.site.infection",
-    "NSQ_Wound.disruption",
-    "NSQ_Organ.space.SSI",
-    "NSQ_Systemic.sepsis",
-    "NSQ_Uriry.tract.infection",
-]
-
-column_transf = ["CGR.bin"]
-
-all_columns = column_transf + column_hb + columns_compl + column_alive + columns_sexe + columns_dates
-
-"""
-Define functions
-"""
+from sklearn.model_selection import train_test_split
+from tablewriter import TableWriter
 
 
 def get_data() -> pd.DataFrame:
     """ Reads the data, selects the meaningful columns, drops duplicated columns, replaces OUI by 1 and NON by 0,
     drops patients with no Hb information.
     """
-    data = pd.read_csv("POSE.csv", index_col=0, parse_dates=columns_dates).loc[:, all_columns].T.drop_duplicates().T
+    data = pd.read_csv("POSE.csv", index_col=0, parse_dates=columns_dates).loc[:, all_columns]
+    data_fragilites = pd.read_csv("fragilites.csv", index_col=0)
+    data = pd.concat([data, data_fragilites], axis=1).T.drop_duplicates().T
     print(f"There are {len(data)} patients")
     data = data.replace("OUI", 1)
     data = data.replace("NON", 0)
@@ -206,8 +164,8 @@ def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory):
     """Will call 'fit' with the given dataframe, col_to_test and pdf. Will plot the fit results and add the figure
     to the pdf."""
 
-    patients_male = df[patients["SEXE"] == "Male"][["HEMOGLOBINE_PREOP", col_to_test]]
-    patients_female = df[patients["SEXE"] == "Female"][["HEMOGLOBINE_PREOP", col_to_test]]
+    patients_male = df[df["SEXE"] == "Male"][["HEMOGLOBINE_PREOP", col_to_test]]
+    patients_female = df[df["SEXE"] == "Female"][["HEMOGLOBINE_PREOP", col_to_test]]
 
     score_male, predict_male = fit(patients_male, col_to_test)
     score_female, predict_female = fit(patients_female, col_to_test)
@@ -266,114 +224,33 @@ def format_x(x):
     return xstr
 
 
-patients = get_data()
-set_alive(patients)
-set_time_of_death(patients)
-set_anemia(patients)
-set_compl(patients)
-set_dead_or_compl(patients)
-
-df_pvalues_anemia = pd.DataFrame(columns=["One-tail P-value", "Two-tail P-value"])
-df_pvalues_anemia.index.name = "vs Anemia"
-df_pvalues_transfu = pd.DataFrame(columns=["One-tail P-value", "Two-tail P-value"])
-df_pvalues_transfu.index.name = "vs Transfusion"
-pdf_anemia = PdfFactory("tables_hb.pdf")
-pdf_transfu = PdfFactory("tables_transfu.pdf")
-
-"""
-Fisher Exact Tests
-"""
-
-# Dead vs Anemia
-get_fischer_df(patients, df_pvalues_anemia, "ANEMIE", "DEAD", ["Anaemic", "Not Anaemic"], ["Dead", "Alive"], pdf_anemia)
-# Dead vs Transfusion
-get_fischer_df(
-    patients,
-    df_pvalues_transfu,
-    column_transf[0],
-    "DEAD",
-    ["Transfusion", "No Transfusion"],
-    ["Dead", "Alive"],
-    pdf_transfu,
-)
-
-# Complications vs Anemia
-get_fischer_df(
-    patients,
-    df_pvalues_anemia,
-    "ANEMIE",
-    "COMPL",
-    ["Anaemic", "Not Anaemic"],
-    ["Complications", "No complications"],
-    pdf_anemia,
-)
-# Complications vs Transfusion
-get_fischer_df(
-    patients,
-    df_pvalues_transfu,
-    column_transf[0],
-    "COMPL",
-    ["Transfusion", "No Transfusion"],
-    ["Complications", "No complications"],
-    pdf_transfu,
-)
-
-# Dead or Complications vs Anemia
-get_fischer_df(
-    patients,
-    df_pvalues_anemia,
-    "ANEMIE",
-    "DEAD_OR_COMPL",
-    ["Anaemic", "Not Anaemic"],
-    ["Complications or death", "Alive and well"],
-    pdf_anemia,
-)
-# Dead or Complications vs Transfusion
-get_fischer_df(
-    patients,
-    df_pvalues_transfu,
-    column_transf[0],
-    "DEAD_OR_COMPL",
-    ["Transfusion", "No Transfusion"],
-    ["Complications or death", "Alive and well"],
-    pdf_transfu,
-)
-
-for compl in columns_compl:
-    # One complication vs Anemia
-    get_fischer_df(
-        patients, df_pvalues_anemia, "ANEMIE", compl, ["Anaemic", "Not Anaemic"], [compl, f"No {compl}"], pdf_anemia
-    )
-    # One complication vs Transfusion
-    get_fischer_df(
-        patients,
-        df_pvalues_transfu,
-        column_transf[0],
-        compl,
-        ["Transfusion", "No Transfusion"],
-        [compl, f"No {compl}"],
-        pdf_transfu,
-    )
-
-df_pvalues_anemia = df_pvalues_anemia.applymap(format_x).astype(str)
-df_pvalues_transfu = df_pvalues_transfu.applymap(format_x).astype(str)
-
-pdf_anemia.add_table(TableWriter(data=df_pvalues_anemia))
-pdf_transfu.add_table(TableWriter(data=df_pvalues_transfu))
-
-"""
-Logistic Regressions
-"""
-
-# Alive vs Anemia
-make_logistic(patients, "DEAD", pdf_anemia)
-
-# Complications vs Anemia
-make_logistic(patients, "COMPL", pdf_anemia)
-
-# Dead or Complications vs Anemia
-make_logistic(patients, "DEAD_OR_COMPL", pdf_anemia)
-
-# One complication vs Anemia
-for compl in columns_compl:
-    make_logistic(patients, compl, pdf_anemia)
+columns_sexe = ["SEXE"]
+column_hb = ["HEMOGLOBINE_PREOP"]
+columns_dates = ["DATE.INDUC", "DATE.DEATH"]
+column_alive = ["ALIVE.J30"]
+columns_compl = [
+    "COMP.PULM",
+    "COMP.CARDIAC",
+    "COMP.AKI",
+    "COMP.ACR",
+    "COMP.PULM",
+    "NSQ_Cardiac.arrest",
+    "NSQ_Myocardial.infarction",
+    "NSQ_Pneumonia",
+    "NSQ_Pulmory.embolism",
+    "NSQ_intubation",
+    "NSQ_Ventilator.48h",
+    "NSQ_Return.operating.room",
+    "NSQ_Stroke",
+    "NSQ_AKI",
+    "NSQ_Deep.vein.thrombosis",
+    "NSQ_Venous.thromboembolism",
+    "NSQ_superf.surgical.site.infection",
+    "NSQ_Deep.surgical.site.infection",
+    "NSQ_Wound.disruption",
+    "NSQ_Organ.space.SSI",
+    "NSQ_Systemic.sepsis",
+    "NSQ_Uriry.tract.infection",
+]
+column_transf = ["CGR.bin"]
+all_columns = column_transf + column_hb + columns_compl + column_alive + columns_sexe + columns_dates

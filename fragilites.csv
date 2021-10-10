@@ -1,6 +1,6 @@
-Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.status,MINI.COG_TOTAL,HEMOGLOBINE_PREOP,CHUTE,chute,"HB 11,6",albbu oui,sup à 3 crit de comor,functional status,minikum,fragilité
+Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.status,MINI.COG_TOTAL,HEMOGLOBINE_PREOP,CHUTE,chute,"HB 11,6",albbu oui,Sup 3 crit de comor,functional status,minikum,fragilite
 033-016-002,22.3,0,partially,3,8.9, >1,OUI,OUI,OUI,,OUI,OUI,5
-033-037-048,30.0,0,partially,3,10.8,jamais,,OUI,OUI,,OUI,OUI,4
+033-037-048,30,0,partially,3,10.8,jamais,,OUI,OUI,,OUI,OUI,4
 033-034-048,32.5,0,partially,NA,9.6,1,OUI,OUI,OUI,,OUI,,4
 033-025-064,NA,0,partially,3,NA,1,OUI,,,,OUI,OUI,3
 033-017-058,NA,0,partially,1,NA,1,OUI,,,,OUI,OUI,3
@@ -10,7 +10,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-023-037,NA,0,partially,0,16.7,1,OUI,,,,OUI,OUI,3
 033-008-040,NA,0,partially,0,14.3,1,OUI,,,,OUI,OUI,3
 033-009-003,NA,0,partially,3,14,1,OUI,,,,OUI,OUI,3
-033-023-042,44.0,0,partially,1,13.8,1,OUI,,,,OUI,OUI,3
+033-023-042,44,0,partially,1,13.8,1,OUI,,,,OUI,OUI,3
 033-004-006,NA,0,partially,2,13.5,1,OUI,,,,OUI,OUI,3
 033-008-108,NA,0,partially,0,13.2, >1,OUI,,,,OUI,OUI,3
 033-002-112,NA,0,partially,1,12.7, >1,OUI,,,,OUI,OUI,3
@@ -19,7 +19,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-034-037,42.8,0,partially,5,11.6, >1,OUI,,,,OUI,,2
 033-033-072,NA,0,dependent,0,11.6,1,OUI,,,,dependent,OUI,2
 033-022-008,NA,0,dependent,2,11.6,1,OUI,,,,dependent,OUI,2
-033-003-046,33.0,0,dependent,1,11.6,jamais,,,OUI,,dependent,OUI,2
+033-003-046,33,0,dependent,1,11.6,jamais,,,OUI,,dependent,OUI,2
 033-001-022,NA,0,partially,0,11.3,jamais,,OUI,,,OUI,OUI,3
 033-033-064,NA,0,partially,5,11.2, >1,OUI,OUI,,,OUI,,3
 033-002-029,NA,0,dependent,2,11.2, >1,OUI,OUI,,,dependent,OUI,3
@@ -50,8 +50,8 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-086,NA,0,dependent,0,NA,1,OUI,,,,dependent,OUI,2
 033-037-120,NA,0,dependent,3,NA, >1,OUI,,,,dependent,OUI,2
 033-016-011,NA,0,dependent,0,15.6,1,OUI,,,,dependent,OUI,2
-033-037-078,19.0,0,dependent,2,15.5,jamais,,,OUI,,dependent,OUI,2
-033-021-023,42.0,0,partially,5,15,1,OUI,,,,OUI,,2
+033-037-078,19,0,dependent,2,15.5,jamais,,,OUI,,dependent,OUI,2
+033-021-023,42,0,partially,5,15,1,OUI,,,,OUI,,2
 033-001-114,NA,0,dependent,1,14.6,1,OUI,,,,dependent,OUI,2
 033-015-091,NA,0,dependent,2,14.5,1,OUI,,,,dependent,OUI,2
 033-020-133,NA,0,dependent,2,14.5,1,OUI,,,,dependent,OUI,2
@@ -66,7 +66,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-002-108,NA,0,dependent,3,12.6,1,OUI,,,,dependent,OUI,2
 033-001-108,NA,0,dependent,3,12.5,1,OUI,,,,dependent,OUI,2
 033-020-119,NA,0,partially,1,12.4,jamais,,,,,OUI,OUI,2
-033-037-047,31.0,0,dependent,5,12.4,1,OUI,,OUI,,dependent,,2
+033-037-047,31,0,dependent,5,12.4,1,OUI,,OUI,,dependent,,2
 033-009-011,NA,0,partially,3,12,jamais,,,,,OUI,OUI,2
 033-016-010,NA,0,dependent,3,11.8,1,OUI,,,,dependent,OUI,2
 033-037-009,NA,0,dependent,3,11.7,1,OUI,,,,dependent,OUI,2
@@ -161,7 +161,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-015-069,NA,0,dependent,2,15.2,jamais,,,,,dependent,OUI,1
 033-015-092,NA,0,dependent,1,15.2,jamais,,,,,dependent,OUI,1
 033-017-136,NA,0,partially,NA,15,NA,NA,,,,OUI,,1
-033-003-041,42.0,0,dependent,2,14.9,jamais,,,,,dependent,OUI,1
+033-003-041,42,0,dependent,2,14.9,jamais,,,,,dependent,OUI,1
 033-008-061,NA,0,dependent,3,14.7,jamais,,,,,dependent,OUI,1
 033-015-014,NA,0,dependent,4,14.7, >1,OUI,,,,dependent,,1
 033-003-073,NA,0,dependent,2,14.7,jamais,,,,,dependent,OUI,1
@@ -193,7 +193,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-027-040,NA,0,dependent,3,13.3,jamais,,,,,dependent,OUI,1
 033-027-049,NA,0,dependent,3,13.3,jamais,,,,,dependent,OUI,1
 033-022-086,NA,0,dependent,3,13.3,jamais,,,,,dependent,OUI,1
-033-037-044,34.0,0,dependent,1,13.3,jamais,,,,,dependent,OUI,1
+033-037-044,34,0,dependent,1,13.3,jamais,,,,,dependent,OUI,1
 033-017-106,NA,0,partially,NA,13.2,NA,NA,,,,OUI,,1
 033-015-015,NA,0,dependent,3,13.2,jamais,,,,,dependent,OUI,1
 033-021-008,NA,0,partially,5,13.1,jamais,,,,,OUI,,1
@@ -320,7 +320,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-037-045,NA,0,dependent,5,15.7,jamais,,,,,dependent,,0
 033-008-132,NA,0,dependent,4,15.6,jamais,,,,,dependent,,0
 033-019-040,NA,0,dependent,4,15.6,jamais,,,,,dependent,,0
-033-023-023,46.0,0,dependent,4,15.5,jamais,,,,,dependent,,0
+033-023-023,46,0,dependent,4,15.5,jamais,,,,,dependent,,0
 033-034-053,NA,0,dependent,5,15.5,jamais,,,,,dependent,,0
 033-034-022,NA,0,dependent,NA,15.3,jamais,,,,,dependent,,0
 033-022-009,NA,0,dependent,NA,15,jamais,,,,,dependent,,0
@@ -344,7 +344,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-030-057,NA,0,dependent,5,13.4,jamais,,,,,dependent,,0
 033-028-002,NA,0,dependent,4,13.3,jamais,,,,,dependent,,0
 033-034-028,NA,0,dependent,5,13.3,jamais,,,,,dependent,,0
-033-025-003,73.0,0,dependent,5,13.2,jamais,,,,,dependent,,0
+033-025-003,73,0,dependent,5,13.2,jamais,,,,,dependent,,0
 033-001-021,NA,0,dependent,4,13.2,jamais,,,,,dependent,,0
 033-019-039,NA,0,dependent,4,13.2,jamais,,,,,dependent,,0
 033-008-144,NA,0,dependent,4,13.1,jamais,,,,,dependent,,0
@@ -363,12 +363,12 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-030-067,NA,0,dependent,5,12.3,jamais,,,,,dependent,,0
 033-021-004,NA,0,dependent,5,12.2,jamais,,,,,dependent,,0
 033-002-088,NA,0,dependent,4,12.1,jamais,,,,,dependent,,0
-033-003-072,43.0,0,dependent,5,12,jamais,,,,,dependent,,0
+033-003-072,43,0,dependent,5,12,jamais,,,,,dependent,,0
 033-014-014,NA,0,dependent,4,12,jamais,,,,,dependent,,0
 033-030-029,NA,0,dependent,4,12,jamais,,,,,dependent,,0
 033-002-110,NA,0,dependent,4,11.8,jamais,,,,,dependent,,0
-033-037-171,31.0,1,totally,0,9.5, >1,OUI,OUI,OUI,,OUI,OUI,5
-033-037-060,24.0,1,partially,1,12.1,1,OUI,,OUI,,OUI,OUI,4
+033-037-171,31,1,totally,0,9.5, >1,OUI,OUI,OUI,,OUI,OUI,5
+033-037-060,24,1,partially,1,12.1,1,OUI,,OUI,,OUI,OUI,4
 033-036-008,30.6,1,totally,0,12.1, >1,OUI,,OUI,,OUI,OUI,4
 033-034-078,28.8,1,totally,0,11.9, >1,OUI,,OUI,,OUI,OUI,4
 033-002-012,NA,1,partially,3,11.4, >1,OUI,OUI,,,OUI,OUI,4
@@ -385,7 +385,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-006-512,NA,1,partially,0,10, >1,OUI,OUI,,,OUI,OUI,4
 033-001-107,NA,1,partially,1,9.5,1,OUI,OUI,,,OUI,OUI,4
 033-036-005,34.6,1,partially,3,9.5, >1,OUI,OUI,,,OUI,OUI,4
-033-033-017,28.0,1,partially,2,9,jamais,,OUI,OUI,,OUI,OUI,4
+033-033-017,28,1,partially,2,9,jamais,,OUI,OUI,,OUI,OUI,4
 033-001-007,NA,1,partially,1,NA, >1,OUI,,,,OUI,OUI,3
 033-008-121,NA,1,partially,3,NA, >1,OUI,,,,OUI,OUI,3
 033-021-018,NA,1,partially,3,NA, >1,OUI,,,,OUI,OUI,3
@@ -420,14 +420,14 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-002-019,NA,1,partially,2,11.7, >1,OUI,,,,OUI,OUI,3
 033-016-027,25.5,1,partially,1,11.7,jamais,,,OUI,,OUI,OUI,3
 033-010-046,NA,1,partially,2,11.6,jamais,,,,,OUI,OUI,2
-033-001-041,35.0,1,dependent,2,11.5,1,OUI,OUI,,,dependent,OUI,3
+033-001-041,35,1,dependent,2,11.5,1,OUI,OUI,,,dependent,OUI,3
 033-007-017,NA,1,partially,NA,11.4,1,OUI,OUI,,,OUI,,3
 033-002-086,NA,1,dependent,0,11.4, >1,OUI,OUI,,,dependent,OUI,3
 033-002-125,NA,1,dependent,3,11.3,1,OUI,OUI,,,dependent,OUI,3
 033-037-037,NA,1,partially,3,11.2,jamais,,OUI,,,OUI,OUI,3
 033-034-020,NA,1,partially,NA,11.1, >1,OUI,OUI,,,OUI,,3
 033-002-070,NA,1,dependent,1,10.7,1,OUI,OUI,,,dependent,OUI,3
-033-003-062,34.0,1,partially,4,10.6,1,OUI,OUI,,,OUI,,3
+033-003-062,34,1,partially,4,10.6,1,OUI,OUI,,,OUI,,3
 033-002-122,NA,1,dependent,0,10.4, >1,OUI,OUI,,,dependent,OUI,3
 033-007-011,19.5,1,partially,5,9.5,jamais,,OUI,OUI,,OUI,,3
 033-002-063,NA,1,partially,0,9.1,jamais,,OUI,,,OUI,OUI,3
@@ -490,8 +490,8 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-033-087,NA,1,partially,2,13.4,jamais,,,,,OUI,OUI,2
 033-029-018,NA,1,partially,3,13.4,jamais,,,,,OUI,OUI,2
 033-017-040,NA,1,totally,3,13.4,jamais,,,,,OUI,OUI,2
-033-037-121,34.0,1,partially,3,13.1,jamais,,,,,OUI,OUI,2
-033-002-018,43.0,1,totally,0,13.1,jamais,,,,,OUI,OUI,2
+033-037-121,34,1,partially,3,13.1,jamais,,,,,OUI,OUI,2
+033-002-018,43,1,totally,0,13.1,jamais,,,,,OUI,OUI,2
 033-015-037,NA,1,dependent,2,13,1,OUI,,,,dependent,OUI,2
 033-006-501,NA,1,totally,0,13,jamais,,,,,OUI,OUI,2
 033-008-072,NA,1,dependent,3,12.9,1,OUI,,,,dependent,OUI,2
@@ -507,13 +507,13 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-001-051,NA,1,partially,5,12.2, >1,OUI,,,,OUI,,2
 033-025-106,NA,1,dependent,3,12.2,1,OUI,,,,dependent,OUI,2
 033-002-068,NA,1,partially,4,12.1,1,OUI,,,,OUI,,2
-033-022-059,36.0,1,partially,NA,12.1, >1,OUI,,,,OUI,,2
+033-022-059,36,1,partially,NA,12.1, >1,OUI,,,,OUI,,2
 033-008-153,NA,1,partially,3,12,jamais,,,,,OUI,OUI,2
 033-015-067,NA,1,partially,5,11.9, >1,OUI,,,,OUI,,2
 033-008-139,NA,1,partially,3,11.8,jamais,,,,,OUI,OUI,2
 033-017-015,NA,1,partially,NA,11.8,1,OUI,,,,OUI,,2
 033-008-027,NA,1,partially,5,11.7, >1,OUI,,,,OUI,,2
-033-029-034,39.0,1,partially,5,11.5,jamais,,OUI,,,OUI,,2
+033-029-034,39,1,partially,5,11.5,jamais,,OUI,,,OUI,,2
 033-016-005,33.5,1,dependent,2,11.5,jamais,,OUI,,,dependent,OUI,2
 033-034-070,NA,1,partially,NA,11.3,jamais,,OUI,,,OUI,,2
 033-034-029,NA,1,partially,NA,11.1,jamais,,OUI,,,OUI,,2
@@ -521,7 +521,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-003-036,NA,1,dependent,3,10.9,jamais,,OUI,,,dependent,OUI,2
 033-025-038,NA,1,dependent,NA,10.8,1,OUI,OUI,,,dependent,,2
 033-034-049,NA,1,partially,NA,10.7,jamais,,OUI,,,OUI,,2
-033-010-029,35.0,1,dependent,1,10.6,jamais,,OUI,,,dependent,OUI,2
+033-010-029,35,1,dependent,1,10.6,jamais,,OUI,,,dependent,OUI,2
 033-007-015,NA,1,partially,NA,9.8,jamais,,OUI,,,OUI,,2
 033-019-013,36.9,1,partially,5,9.8,jamais,,OUI,,,OUI,,2
 033-037-079,NA,1,dependent,2,9.8,jamais,,OUI,,,dependent,OUI,2
@@ -622,9 +622,9 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-015-030,NA,1,dependent,3,15,jamais,,,,,dependent,OUI,1
 033-022-040,NA,1,dependent,3,15,jamais,,,,,dependent,OUI,1
 033-023-007,NA,1,dependent,2,14.9,jamais,,,,,dependent,OUI,1
-033-017-123,45.0,1,partially,NA,14.7,jamais,,,,,OUI,,1
+033-017-123,45,1,partially,NA,14.7,jamais,,,,,OUI,,1
 033-014-010,NA,1,partially,NA,14.7,jamais,,,,,OUI,,1
-033-003-034,40.0,1,partially,5,14.7,jamais,,,,,OUI,,1
+033-003-034,40,1,partially,5,14.7,jamais,,,,,OUI,,1
 033-001-039,NA,1,dependent,3,14.7,jamais,,,,,dependent,OUI,1
 033-027-038,NA,1,dependent,3,14.7,jamais,,,,,dependent,OUI,1
 033-005-020,NA,1,dependent,5,14.6,1,OUI,,,,dependent,,1
@@ -668,7 +668,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-010-043,NA,1,dependent,1,13.1,jamais,,,,,dependent,OUI,1
 033-003-037,NA,1,dependent,0,13.1,jamais,,,,,dependent,OUI,1
 033-008-111,NA,1,partially,4,13,jamais,,,,,OUI,,1
-033-029-023,34.0,1,partially,5,13,jamais,,,,,OUI,,1
+033-029-023,34,1,partially,5,13,jamais,,,,,OUI,,1
 033-029-011,NA,1,dependent,2,13,jamais,,,,,dependent,OUI,1
 033-037-113,NA,1,dependent,3,13,jamais,,,,,dependent,OUI,1
 033-037-166,NA,1,dependent,3,13,jamais,,,,,dependent,OUI,1
@@ -690,11 +690,11 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-165,NA,1,dependent,1,12.5,jamais,,,,,dependent,OUI,1
 033-037-123,NA,1,dependent,2,12.5,jamais,,,,,dependent,OUI,1
 033-019-042,NA,1,dependent,5,12.4,1,OUI,,,,dependent,,1
-033-033-014,33.0,1,dependent,5,12.4,jamais,,,OUI,,dependent,,1
+033-033-014,33,1,dependent,5,12.4,jamais,,,OUI,,dependent,,1
 033-008-066,NA,1,partially,4,12.3,jamais,,,,,OUI,,1
 033-025-039,NA,1,totally,5,12.3,jamais,,,,,OUI,,1
 033-034-013,NA,1,dependent,NA,12.3,1,OUI,,,,dependent,,1
-033-037-049,33.0,1,dependent,5,12.3,jamais,,,OUI,,dependent,,1
+033-037-049,33,1,dependent,5,12.3,jamais,,,OUI,,dependent,,1
 033-015-095,NA,1,dependent,2,12.1,jamais,,,,,dependent,OUI,1
 033-030-073,NA,1,dependent,5,12.1, >1,OUI,,,,dependent,,1
 033-034-063,33.6,1,partially,NA,12,jamais,,,,,OUI,,1
@@ -702,7 +702,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-017-109,NA,1,dependent,3,11.9,jamais,,,,,dependent,OUI,1
 033-028-005,NA,1,dependent,0,11.9,jamais,,,,,dependent,OUI,1
 033-008-046,NA,1,dependent,1,11.8,jamais,,,,,dependent,OUI,1
-033-008-003,37.0,1,dependent,1,11.8,jamais,,,,,dependent,OUI,1
+033-008-003,37,1,dependent,1,11.8,jamais,,,,,dependent,OUI,1
 033-018-001,NA,1,dependent,3,11.8,jamais,,,,,dependent,OUI,1
 033-034-074,NA,1,partially,NA,11.7,jamais,,,,,OUI,,1
 033-033-081,NA,1,dependent,1,11.7,jamais,,,,,dependent,OUI,1
@@ -817,14 +817,14 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-037-168,NA,1,dependent,4,NA,jamais,,,,,dependent,,0
 033-024-010,NA,1,dependent,5,NA,jamais,,,,,dependent,,0
 033-038-016,NA,1,dependent,5,NA,jamais,,,,,dependent,,0
-033-029-015,46.0,1,dependent,4,17.6,jamais,,,,,dependent,,0
+033-029-015,46,1,dependent,4,17.6,jamais,,,,,dependent,,0
 033-017-012,NA,1,dependent,4,17.2,jamais,,,,,dependent,,0
 033-024-027,NA,1,dependent,5,16.7,jamais,,,,,dependent,,0
 033-005-024,NA,1,dependent,5,16.2,jamais,,,,,dependent,,0
 033-034-052,NA,1,dependent,5,15.9,jamais,,,,,dependent,,0
 033-010-033,NA,1,dependent,5,15.8,jamais,,,,,dependent,,0
 033-017-115,NA,1,dependent,5,15.6,jamais,,,,,dependent,,0
-033-038-027,38.0,1,dependent,4,15.3,jamais,,,,,dependent,,0
+033-038-027,38,1,dependent,4,15.3,jamais,,,,,dependent,,0
 033-020-090,NA,1,dependent,5,15.2,jamais,,,,,dependent,,0
 033-015-024,NA,1,dependent,4,15.1,jamais,,,,,dependent,,0
 033-007-006,NA,1,dependent,5,15.1,jamais,,,,,dependent,,0
@@ -880,9 +880,9 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-001-054,NA,1,dependent,5,12.8,jamais,,,,,dependent,,0
 033-024-021,NA,1,dependent,4,12.8,jamais,,,,,dependent,,0
 033-015-060,NA,1,dependent,4,12.7,jamais,,,,,dependent,,0
-033-009-085,45.0,1,dependent,4,12.6,jamais,,,,,dependent,,0
+033-009-085,45,1,dependent,4,12.6,jamais,,,,,dependent,,0
 033-036-007,NA,1,dependent,5,12.6,jamais,,,,,dependent,,0
-033-017-117,46.0,1,dependent,4,12.5,jamais,,,,,dependent,,0
+033-017-117,46,1,dependent,4,12.5,jamais,,,,,dependent,,0
 033-025-019,NA,1,dependent,5,12.5,jamais,,,,,dependent,,0
 033-033-075,NA,1,dependent,5,12.5,jamais,,,,,dependent,,0
 033-006-100,NA,1,dependent,5,12.5,jamais,,,,,dependent,,0
@@ -896,10 +896,10 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-026,NA,1,dependent,5,11.8,jamais,,,,,dependent,,0
 033-037-062,NA,1,dependent,5,11.8,jamais,,,,,dependent,,0
 033-010-007,NA,1,dependent,5,11.7,jamais,,,,,dependent,,0
-033-023-017,27.0,2,totally,3,10.4, >1,OUI,OUI,OUI,,OUI,OUI,5
+033-023-017,27,2,totally,3,10.4, >1,OUI,OUI,OUI,,OUI,OUI,5
 033-028-001,23.2,2,totally,0,10.4, >1,OUI,OUI,OUI,,OUI,OUI,5
-033-037-172,32.0,2,partially,1,12.9, >1,OUI,,OUI,,OUI,OUI,4
-033-027-010,28.0,2,totally,0,12.2, >1,OUI,,OUI,,OUI,OUI,4
+033-037-172,32,2,partially,1,12.9, >1,OUI,,OUI,,OUI,OUI,4
+033-027-010,28,2,totally,0,12.2, >1,OUI,,OUI,,OUI,OUI,4
 033-003-048,29.1,2,partially,2,12, >1,OUI,,OUI,,OUI,OUI,4
 033-027-004,NA,2,partially,0,11.6, >1,OUI,,,,OUI,OUI,3
 033-019-002,NA,2,partially,2,11.6, >1,OUI,,,,OUI,OUI,3
@@ -917,7 +917,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-122,NA,2,totally,0,9.4,1,OUI,OUI,,,OUI,OUI,4
 033-016-017,NA,2,totally,0,9.2,1,OUI,OUI,,,OUI,OUI,4
 033-019-024,NA,2,partially,3,9.1,1,OUI,OUI,,,OUI,OUI,4
-033-037-053,23.0,2,totally,0,9.1,jamais,,OUI,OUI,,OUI,OUI,4
+033-037-053,23,2,totally,0,9.1,jamais,,OUI,OUI,,OUI,OUI,4
 033-017-062,NA,2,partially,3,8.4, >1,OUI,OUI,,,OUI,OUI,4
 033-002-094,NA,2,partially,0,8, >1,OUI,OUI,,,OUI,OUI,4
 033-002-091,NA,2,totally,0,7.6, >1,OUI,OUI,,,OUI,OUI,4
@@ -936,10 +936,10 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-172,NA,2,totally,2,14.3, >1,OUI,,,,OUI,OUI,3
 033-008-124,NA,2,partially,0,14.2, >1,OUI,,,,OUI,OUI,3
 033-008-101,NA,2,totally,0,14,1,OUI,,,,OUI,OUI,3
-033-034-003,35.0,2,partially,0,13.9, >1,OUI,,,,OUI,OUI,3
+033-034-003,35,2,partially,0,13.9, >1,OUI,,,,OUI,OUI,3
 033-002-049,NA,2,totally,1,13.8, >1,OUI,,,,OUI,OUI,3
 033-037-119,NA,2,totally,0,13.8, >1,OUI,,,,OUI,OUI,3
-033-029-012,38.0,2,partially,3,13.6,1,OUI,,,,OUI,OUI,3
+033-029-012,38,2,partially,3,13.6,1,OUI,,,,OUI,OUI,3
 033-008-166,NA,2,partially,1,13.3,1,OUI,,,,OUI,OUI,3
 033-008-155,NA,2,totally,0,13.2,1,OUI,,,,OUI,OUI,3
 033-036-044,NA,2,totally,1,13.1, >1,OUI,,,,OUI,OUI,3
@@ -959,7 +959,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-007-008,NA,2,partially,0,12,1,OUI,,,,OUI,OUI,3
 033-002-032,NA,2,partially,2,12,1,OUI,,,,OUI,OUI,3
 033-006-506,NA,2,partially,2,12, >1,OUI,,,,OUI,OUI,3
-033-021-024,22.0,2,totally,1,12,jamais,,,OUI,,OUI,OUI,3
+033-021-024,22,2,totally,1,12,jamais,,,OUI,,OUI,OUI,3
 033-023-035,NA,2,totally,1,11.9,1,OUI,,,,OUI,OUI,3
 033-001-017,NA,2,partially,3,11.8, >1,OUI,,,,OUI,OUI,3
 033-001-049,NA,2,totally,1,11.8, >1,OUI,,,,OUI,OUI,3
@@ -977,23 +977,23 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-002-033,NA,2,partially,4,11,1,OUI,OUI,,,OUI,,3
 033-022-028,NA,2,partially,3,11,jamais,,OUI,,,OUI,OUI,3
 033-002-096,NA,2,dependent,1,11,1,OUI,OUI,,,dependent,OUI,3
-033-002-120,36.0,2,dependent,3,11,1,OUI,OUI,,,dependent,OUI,3
+033-002-120,36,2,dependent,3,11,1,OUI,OUI,,,dependent,OUI,3
 033-001-029,NA,2,totally,0,10.9,jamais,,OUI,,,OUI,OUI,3
 033-038-017,NA,2,partially,1,10.8,jamais,,OUI,,,OUI,OUI,3
-033-023-021,40.0,2,partially,NA,10.7, >1,OUI,OUI,,,OUI,,3
+033-023-021,40,2,partially,NA,10.7, >1,OUI,OUI,,,OUI,,3
 033-010-016,NA,2,partially,5,10.6, >1,OUI,OUI,,,OUI,,3
 033-019-045,NA,2,partially,4,10.3,1,OUI,OUI,,,OUI,,3
 033-009-071,NA,2,partially,5,10.3,1,OUI,OUI,,,OUI,,3
 033-009-051,NA,2,dependent,3,10.3,1,OUI,OUI,,,dependent,OUI,3
 033-033-048,NA,2,partially,2,10.2,jamais,,OUI,,,OUI,OUI,3
-033-022-013,41.0,2,partially,NA,10,1,OUI,OUI,,,OUI,,3
-033-033-068,39.0,2,partially,1,10,jamais,,OUI,,,OUI,OUI,3
+033-022-013,41,2,partially,NA,10,1,OUI,OUI,,,OUI,,3
+033-033-068,39,2,partially,1,10,jamais,,OUI,,,OUI,OUI,3
 033-006-504,NA,2,partially,5,9.5,1,OUI,OUI,,,OUI,,3
 033-002-066,NA,2,partially,3,9.4,jamais,,OUI,,,OUI,OUI,3
 033-017-021,NA,2,partially,NA,9,1,OUI,OUI,,,OUI,,3
 033-029-003,NA,2,partially,2,8.9,jamais,,OUI,,,OUI,OUI,3
 033-030-072,NA,2,partially,0,8.7,jamais,,OUI,,,OUI,OUI,3
-033-009-026,24.0,2,partially,4,8.3,jamais,,OUI,OUI,,OUI,,3
+033-009-026,24,2,partially,4,8.3,jamais,,OUI,OUI,,OUI,,3
 033-020-074,NA,2,partially,NA,7.9, >1,OUI,OUI,,,OUI,,3
 033-008-009,NA,2,partially,0,NA,jamais,,,,,OUI,OUI,2
 033-008-039,NA,2,partially,3,NA,jamais,,,,,OUI,OUI,2
@@ -1040,14 +1040,14 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-036-002,46.4,2,partially,1,14.2,jamais,,,,,OUI,OUI,2
 033-025-018,NA,2,partially,1,14.1,jamais,,,,,OUI,OUI,2
 033-020-054,NA,2,dependent,3,14, >1,OUI,,,,dependent,OUI,2
-033-033-020,37.0,2,partially,0,13.8,jamais,,,,,OUI,OUI,2
+033-033-020,37,2,partially,0,13.8,jamais,,,,,OUI,OUI,2
 033-028-006,NA,2,partially,1,13.8,jamais,,,,,OUI,OUI,2
 033-008-086,NA,2,dependent,1,13.8,1,OUI,,,,dependent,OUI,2
 033-020-105,NA,2,dependent,3,13.8, >1,OUI,,,,dependent,OUI,2
 033-009-092,NA,2,dependent,3,13.8,1,OUI,,,,dependent,OUI,2
 033-003-071,NA,2,partially,3,13.7,jamais,,,,,OUI,OUI,2
 033-036-032,45.1,2,partially,2,13.5,jamais,,,,,OUI,OUI,2
-033-022-025,41.0,2,dependent,3,13.5,1,OUI,,,,dependent,OUI,2
+033-022-025,41,2,dependent,3,13.5,1,OUI,,,,dependent,OUI,2
 033-009-096,NA,2,dependent,3,13.5,1,OUI,,,,dependent,OUI,2
 033-016-023,NA,2,partially,3,13.4,jamais,,,,,OUI,OUI,2
 033-002-064,NA,2,partially,0,13.2,jamais,,,,,OUI,OUI,2
@@ -1063,15 +1063,15 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-015-089,NA,2,dependent,2,12.6,1,OUI,,,,dependent,OUI,2
 033-022-053,NA,2,dependent,1,12.6,1,OUI,,,,dependent,OUI,2
 033-015-010,NA,2,partially,0,12.5,jamais,,,,,OUI,OUI,2
-033-037-162,36.0,2,partially,1,12.3,jamais,,,,,OUI,OUI,2
+033-037-162,36,2,partially,1,12.3,jamais,,,,,OUI,OUI,2
 033-008-150,NA,2,dependent,0,12.3,1,OUI,,,,dependent,OUI,2
 033-010-048,NA,2,partially,4,12.2,1,OUI,,,,OUI,,2
 033-002-079,NA,2,totally,5,12.2, >1,OUI,,,,OUI,,2
 033-030-005,NA,2,partially,2,12.1,jamais,,,,,OUI,OUI,2
 033-036-018,NA,2,dependent,3,12.1, >1,OUI,,,,dependent,OUI,2
-033-009-022,22.0,2,dependent,5,12.1,1,OUI,,OUI,,dependent,,2
+033-009-022,22,2,dependent,5,12.1,1,OUI,,OUI,,dependent,,2
 033-001-045,NA,2,partially,5,12,1,OUI,,,,OUI,,2
-033-036-031,37.0,2,totally,0,12,jamais,,,,,OUI,OUI,2
+033-036-031,37,2,totally,0,12,jamais,,,,,OUI,OUI,2
 033-020-097,NA,2,totally,0,12,jamais,,,,,OUI,OUI,2
 033-037-033,NA,2,partially,1,11.9,jamais,,,,,OUI,OUI,2
 033-034-055,NA,2,totally,0,11.9,jamais,,,,,OUI,OUI,2
@@ -1085,9 +1085,9 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-130,NA,2,dependent,2,11.4,jamais,,OUI,,,dependent,OUI,2
 033-009-018,NA,2,dependent,1,11.4,jamais,,OUI,,,dependent,OUI,2
 033-023-010,NA,2,dependent,3,11.4,jamais,,OUI,,,dependent,OUI,2
-033-038-003,29.0,2,dependent,NA,11.4,jamais,,OUI,OUI,,dependent,,2
+033-038-003,29,2,dependent,NA,11.4,jamais,,OUI,OUI,,dependent,,2
 033-002-102,51.7,2,dependent,2,11.3,jamais,,OUI,,,dependent,OUI,2
-033-023-043,36.0,2,dependent,5,11.2,1,OUI,OUI,,,dependent,,2
+033-023-043,36,2,dependent,5,11.2,1,OUI,OUI,,,dependent,,2
 033-007-023,NA,2,dependent,3,11.1,jamais,,OUI,,,dependent,OUI,2
 033-008-109,NA,2,dependent,4,11, >1,OUI,OUI,,,dependent,,2
 033-027-007,NA,2,dependent,0,10.9,jamais,,OUI,,,dependent,OUI,2
@@ -1096,17 +1096,17 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-037-042,NA,2,dependent,1,10.6,jamais,,OUI,,,dependent,OUI,2
 033-002-023,NA,2,partially,4,10.5,jamais,,OUI,,,OUI,,2
 033-008-177,NA,2,dependent,4,10.5,1,OUI,OUI,,,dependent,,2
-033-023-022,36.0,2,partially,NA,10,jamais,,OUI,,,OUI,,2
+033-023-022,36,2,partially,NA,10,jamais,,OUI,,,OUI,,2
 033-003-069,NA,2,dependent,3,10,jamais,,OUI,,,dependent,OUI,2
 033-001-046,NA,2,partially,5,9.9,jamais,,OUI,,,OUI,,2
 033-008-183,NA,2,dependent,4,9.8,1,OUI,OUI,,,dependent,,2
 033-033-041,NA,2,dependent,0,9.7,jamais,,OUI,,,dependent,OUI,2
-033-008-048,25.0,2,dependent,5,9.7,jamais,,OUI,OUI,,dependent,,2
+033-008-048,25,2,dependent,5,9.7,jamais,,OUI,OUI,,dependent,,2
 033-002-060,NA,2,totally,5,9.6,jamais,,OUI,,,OUI,,2
 033-002-062,NA,2,partially,4,9.5,jamais,,OUI,,,OUI,,2
 033-001-127,NA,2,dependent,5,9.5,1,OUI,OUI,,,dependent,,2
 033-006-021,NA,2,dependent,2,8.9,jamais,,OUI,,,dependent,OUI,2
-033-017-029,28.0,2,dependent,NA,7.8,NA,NA,OUI,OUI,,dependent,,2
+033-017-029,28,2,dependent,NA,7.8,NA,NA,OUI,OUI,,dependent,,2
 033-019-005,NA,2,partially,4,NA,jamais,,,,,OUI,,1
 033-022-075,NA,2,partially,4,NA,jamais,,,,,OUI,,1
 033-017-116,NA,2,partially,NA,NA,NA,NA,,,,OUI,,1
@@ -1183,7 +1183,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-068,NA,2,dependent,3,15.6,jamais,,,,,dependent,OUI,1
 033-009-030,NA,2,dependent,1,15.6,jamais,,,,,dependent,OUI,1
 033-008-160,NA,2,dependent,2,15.3,jamais,,,,,dependent,OUI,1
-033-002-035,42.0,2,partially,4,15,jamais,,,,,OUI,,1
+033-002-035,42,2,partially,4,15,jamais,,,,,OUI,,1
 033-027-042,NA,2,dependent,0,15,jamais,,,,,dependent,OUI,1
 033-020-084,NA,2,dependent,2,14.9,jamais,,,,,dependent,OUI,1
 033-009-047,NA,2,dependent,3,14.9,jamais,,,,,dependent,OUI,1
@@ -1205,12 +1205,12 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-014-012,NA,2,dependent,2,13.8,jamais,,,,,dependent,OUI,1
 033-022-047,NA,2,dependent,5,13.8,1,OUI,,,,dependent,,1
 033-010-005,NA,2,dependent,1,13.8,jamais,,,,,dependent,OUI,1
-033-017-066,42.0,2,partially,NA,13.7,NA,NA,,,,OUI,,1
-033-017-068,44.0,2,dependent,NA,13.6,1,OUI,,,,dependent,,1
+033-017-066,42,2,partially,NA,13.7,NA,NA,,,,OUI,,1
+033-017-068,44,2,dependent,NA,13.6,1,OUI,,,,dependent,,1
 033-027-022,NA,2,dependent,2,13.6,jamais,,,,,dependent,OUI,1
 033-027-025,NA,2,dependent,3,13.6,jamais,,,,,dependent,OUI,1
 033-019-012,NA,2,dependent,2,13.6,jamais,,,,,dependent,OUI,1
-033-015-052,47.0,2,partially,5,13.5,jamais,,,,,OUI,,1
+033-015-052,47,2,partially,5,13.5,jamais,,,,,OUI,,1
 033-015-025,NA,2,partially,5,13.5,jamais,,,,,OUI,,1
 033-007-016,NA,2,dependent,2,13.5,jamais,,,,,dependent,OUI,1
 033-033-024,NA,2,dependent,2,13.5,jamais,,,,,dependent,OUI,1
@@ -1229,7 +1229,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-051,NA,2,dependent,5,13,1,OUI,,,,dependent,,1
 033-008-116,NA,2,dependent,5,13,1,OUI,,,,dependent,,1
 033-022-039,NA,2,dependent,2,13,jamais,,,,,dependent,OUI,1
-033-037-016,37.0,2,dependent,5,13,1,OUI,,,,dependent,,1
+033-037-016,37,2,dependent,5,13,1,OUI,,,,dependent,,1
 033-038-001,NA,2,dependent,0,13,jamais,,,,,dependent,OUI,1
 033-015-086,NA,2,dependent,3,12.9,jamais,,,,,dependent,OUI,1
 033-002-011,NA,2,dependent,4,12.9, >1,OUI,,,,dependent,,1
@@ -1241,17 +1241,17 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-148,NA,2,dependent,3,12.8,jamais,,,,,dependent,OUI,1
 033-037-111,NA,2,dependent,3,12.7,jamais,,,,,dependent,OUI,1
 033-004-003,NA,2,dependent,5,12.7,1,OUI,,,,dependent,,1
-033-017-059,34.0,2,partially,NA,12.6,NA,NA,,,,OUI,,1
+033-017-059,34,2,partially,NA,12.6,NA,NA,,,,OUI,,1
 033-008-134,NA,2,dependent,3,12.6,jamais,,,,,dependent,OUI,1
 033-014-007,NA,2,dependent,3,12.6,jamais,,,,,dependent,OUI,1
 033-016-013,NA,2,dependent,5,12.6,1,OUI,,,,dependent,,1
-033-025-090,82.0,2,dependent,0,12.5,jamais,,,,,dependent,OUI,1
+033-025-090,82,2,dependent,0,12.5,jamais,,,,,dependent,OUI,1
 033-008-082,NA,2,dependent,4,12.5,1,OUI,,,,dependent,,1
 033-019-027,NA,2,dependent,5,12.5,1,OUI,,,,dependent,,1
 033-007-010,NA,2,dependent,4,12.5,1,OUI,,,,dependent,,1
-033-022-084,33.0,2,dependent,5,12.5,jamais,,,OUI,,dependent,,1
+033-022-084,33,2,dependent,5,12.5,jamais,,,OUI,,dependent,,1
 033-031-009,NA,2,dependent,3,12.5,jamais,,,,,dependent,OUI,1
-033-014-004,40.0,2,dependent,3,12.4,jamais,,,,,dependent,OUI,1
+033-014-004,40,2,dependent,3,12.4,jamais,,,,,dependent,OUI,1
 033-004-009,39.2,2,dependent,3,12.4,jamais,,,,,dependent,OUI,1
 033-029-035,NA,2,dependent,3,12.3,jamais,,,,,dependent,OUI,1
 033-017-069,NA,2,partially,NA,11.9,NA,NA,,,,OUI,,1
@@ -1259,7 +1259,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-066,NA,2,dependent,NA,11.9,1,OUI,,,,dependent,,1
 033-015-083,NA,2,dependent,1,11.8,jamais,,,,,dependent,OUI,1
 033-020-115,NA,2,dependent,3,11.8,jamais,,,,,dependent,OUI,1
-033-009-093,32.0,2,dependent,5,11.8,jamais,,,OUI,,dependent,,1
+033-009-093,32,2,dependent,5,11.8,jamais,,,OUI,,dependent,,1
 033-037-002,NA,2,dependent,2,11.8,jamais,,,,,dependent,OUI,1
 033-014-008,NA,2,dependent,2,11.7,jamais,,,,,dependent,OUI,1
 033-018-029,NA,2,dependent,NA,11.7, >1,OUI,,,,dependent,,1
@@ -1367,8 +1367,8 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-032-002,NA,2,dependent,5,NA,jamais,,,,,dependent,,0
 033-017-048,NA,2,dependent,NA,16.1,NA,NA,,,,dependent,,0
 033-025-035,NA,2,dependent,5,16,jamais,,,,,dependent,,0
-033-017-001,46.0,2,dependent,5,15.8,jamais,,,,,dependent,,0
-033-022-045,39.0,2,dependent,5,15.7,jamais,,,,,dependent,,0
+033-017-001,46,2,dependent,5,15.8,jamais,,,,,dependent,,0
+033-022-045,39,2,dependent,5,15.7,jamais,,,,,dependent,,0
 033-030-055,NA,2,dependent,5,15.7,jamais,,,,,dependent,,0
 033-028-008,NA,2,dependent,4,15.7,jamais,,,,,dependent,,0
 033-033-030,NA,2,dependent,5,15.6,jamais,,,,,dependent,,0
@@ -1385,7 +1385,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-024-022,NA,2,dependent,5,14.3,jamais,,,,,dependent,,0
 033-034-050,NA,2,dependent,5,14.2,jamais,,,,,dependent,,0
 033-015-093,NA,2,dependent,4,14.1,jamais,,,,,dependent,,0
-033-002-077,37.0,2,dependent,5,14.1,jamais,,,,,dependent,,0
+033-002-077,37,2,dependent,5,14.1,jamais,,,,,dependent,,0
 033-024-003,NA,2,dependent,4,14.1,jamais,,,,,dependent,,0
 033-015-044,NA,2,dependent,5,14,jamais,,,,,dependent,,0
 033-008-018,NA,2,dependent,4,13.9,jamais,,,,,dependent,,0
@@ -1404,7 +1404,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-009,NA,2,dependent,4,13.4,jamais,,,,,dependent,,0
 033-024-024,NA,2,dependent,5,13.4,jamais,,,,,dependent,,0
 033-017-060,43.4,2,dependent,5,13.3,jamais,,,,,dependent,,0
-033-020-163,39.0,2,dependent,4,13.3,jamais,,,,,dependent,,0
+033-020-163,39,2,dependent,4,13.3,jamais,,,,,dependent,,0
 033-001-112,38.3,2,dependent,4,13.3,jamais,,,,,dependent,,0
 033-037-068,NA,2,dependent,4,13.3,jamais,,,,,dependent,,0
 033-017-045,NA,2,dependent,NA,13.2,NA,NA,,,,dependent,,0
@@ -1421,7 +1421,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-175,NA,2,dependent,4,12.7,jamais,,,,,dependent,,0
 033-017-119,NA,2,dependent,5,12.7,jamais,,,,,dependent,,0
 033-010-038,NA,2,dependent,4,12.6,jamais,,,,,dependent,,0
-033-017-137,37.0,2,dependent,NA,12.4,jamais,,,,,dependent,,0
+033-017-137,37,2,dependent,NA,12.4,jamais,,,,,dependent,,0
 033-033-002,NA,2,dependent,4,12,jamais,,,,,dependent,,0
 033-031-006,NA,2,dependent,4,12,jamais,,,,,dependent,,0
 033-009-062,55.8,2,dependent,5,11.7,jamais,,,,,dependent,,0
@@ -1433,18 +1433,18 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-024,NA,3,partially,1,11, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-008-152,NA,3,partially,0,10.7,1,OUI,OUI,,OUI,OUI,OUI,5
 033-008-138,NA,3,partially,0,10.5, >1,OUI,OUI,,OUI,OUI,OUI,5
-033-037-129,29.0,3,totally,0,10.3,jamais,,OUI,OUI,OUI,OUI,OUI,5
+033-037-129,29,3,totally,0,10.3,jamais,,OUI,OUI,OUI,OUI,OUI,5
 033-008-136,NA,3,partially,1,10.1, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-017-007,NA,3,totally,0,10.1,1,OUI,OUI,,OUI,OUI,OUI,5
-033-023-050,26.0,3,dependent,3,10.1,1,OUI,OUI,OUI,OUI,dependent,OUI,5
+033-023-050,26,3,dependent,3,10.1,1,OUI,OUI,OUI,OUI,dependent,OUI,5
 033-031-008,NA,3,partially,0,9.8, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-037-149,NA,3,partially,1,9.5,1,OUI,OUI,,OUI,OUI,OUI,5
 033-016-014,NA,3,partially,3,9.4, >1,OUI,OUI,,OUI,OUI,OUI,5
-033-017-132,32.0,3,partially,3,9,jamais,,OUI,OUI,OUI,OUI,OUI,5
+033-017-132,32,3,partially,3,9,jamais,,OUI,OUI,OUI,OUI,OUI,5
 033-001-047,NA,3,partially,2,8.8,1,OUI,OUI,,OUI,OUI,OUI,5
 033-001-018,26.2,3,partially,0,8.6,jamais,,OUI,OUI,OUI,OUI,OUI,5
 033-034-045,27.4,3,partially,NA,8.4, >1,OUI,OUI,OUI,OUI,OUI,,5
-033-038-005,31.0,3,partially,1,8.2,jamais,,OUI,OUI,OUI,OUI,OUI,5
+033-038-005,31,3,partially,1,8.2,jamais,,OUI,OUI,OUI,OUI,OUI,5
 033-034-019,21.8,3,partially,NA,7.9, >1,OUI,OUI,OUI,OUI,OUI,,5
 033-007-031,NA,3,partially,0,6.5,1,OUI,OUI,,OUI,OUI,OUI,5
 033-019-031,NA,3,partially,3,6.4, >1,OUI,OUI,,OUI,OUI,OUI,5
@@ -1461,7 +1461,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-002-105,NA,3,partially,2,13.7, >1,OUI,,,OUI,OUI,OUI,4
 033-037-133,NA,3,partially,3,13.7, >1,OUI,,,OUI,OUI,OUI,4
 033-027-037,NA,3,partially,2,13.2, >1,OUI,,,OUI,OUI,OUI,4
-033-009-031,32.0,3,partially,4,13.2, >1,OUI,,OUI,OUI,OUI,,4
+033-009-031,32,3,partially,4,13.2, >1,OUI,,OUI,OUI,OUI,,4
 033-037-131,NA,3,partially,0,13.2,1,OUI,,,OUI,OUI,OUI,4
 033-027-001,NA,3,partially,0,13.1,1,OUI,,,OUI,OUI,OUI,4
 033-002-039,NA,3,partially,1,13.1,1,OUI,,,OUI,OUI,OUI,4
@@ -1476,19 +1476,19 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-027-008,NA,3,totally,2,12.4,1,OUI,,,OUI,OUI,OUI,4
 033-002-050,NA,3,totally,0,12.4, >1,OUI,,,OUI,OUI,OUI,4
 033-027-021,NA,3,partially,1,12.3,1,OUI,,,OUI,OUI,OUI,4
-033-010-026,41.0,3,partially,2,11.9, >1,OUI,,,OUI,OUI,OUI,4
-033-006-005,35.0,3,partially,1,11.9,1,OUI,,,OUI,OUI,OUI,4
+033-010-026,41,3,partially,2,11.9, >1,OUI,,,OUI,OUI,OUI,4
+033-006-005,35,3,partially,1,11.9,1,OUI,,,OUI,OUI,OUI,4
 033-037-156,NA,3,partially,2,11.8,1,OUI,,,OUI,OUI,OUI,4
 033-020-059,NA,3,partially,NA,11.6, >1,OUI,,,OUI,OUI,,3
 033-027-033,NA,3,partially,3,11.4,jamais,,OUI,,OUI,OUI,OUI,4
 033-025-032,NA,3,partially,2,11.4,jamais,,OUI,,OUI,OUI,OUI,4
 033-020-017,NA,3,partially,NA,11.4,1,OUI,OUI,,OUI,OUI,,4
 033-004-007,NA,3,partially,3,11.4,jamais,,OUI,,OUI,OUI,OUI,4
-033-033-008,37.0,3,partially,1,11.3,jamais,,OUI,,OUI,OUI,OUI,4
+033-033-008,37,3,partially,1,11.3,jamais,,OUI,,OUI,OUI,OUI,4
 033-027-036,NA,3,totally,2,11.2,jamais,,OUI,,OUI,OUI,OUI,4
 033-015-055,NA,3,dependent,2,11.2,1,OUI,OUI,,OUI,dependent,OUI,4
 033-034-043,NA,3,partially,NA,11,1,OUI,OUI,,OUI,OUI,,4
-033-008-052,23.0,3,dependent,5,11,1,OUI,OUI,OUI,OUI,dependent,,4
+033-008-052,23,3,dependent,5,11,1,OUI,OUI,OUI,OUI,dependent,,4
 033-002-037,NA,3,partially,4,10.8, >1,OUI,OUI,,OUI,OUI,,4
 033-028-007,NA,3,totally,0,10.7,jamais,,OUI,,OUI,OUI,OUI,4
 033-004-008,24.4,3,partially,5,10.6,jamais,,OUI,OUI,OUI,OUI,,4
@@ -1517,7 +1517,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-019,NA,3,partially,NA,NA,1,OUI,,,OUI,OUI,,3
 033-020-023,NA,3,partially,NA,NA,1,OUI,,,OUI,OUI,,3
 033-020-147,NA,3,partially,3,NA,jamais,,,,OUI,OUI,OUI,3
-033-025-016,34.0,3,partially,5,NA,1,OUI,,,OUI,OUI,,3
+033-025-016,34,3,partially,5,NA,1,OUI,,,OUI,OUI,,3
 033-023-028,NA,3,partially,3,NA,jamais,,,,OUI,OUI,OUI,3
 033-006-101,NA,3,partially,5,NA, >1,OUI,,,OUI,OUI,,3
 033-006-003,NA,3,partially,0,NA,jamais,,,,OUI,OUI,OUI,3
@@ -1536,16 +1536,16 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-024-014,NA,3,dependent,1,NA, >1,OUI,,,OUI,dependent,OUI,3
 033-023-052,NA,3,partially,0,17.5,jamais,,,,OUI,OUI,OUI,3
 033-020-056,NA,3,dependent,2,16.3, >1,OUI,,,OUI,dependent,OUI,3
-033-002-008,41.0,3,partially,4,15.8, >1,OUI,,,OUI,OUI,,3
+033-002-008,41,3,partially,4,15.8, >1,OUI,,,OUI,OUI,,3
 033-020-044,NA,3,partially,3,15.3,jamais,,,,OUI,OUI,OUI,3
 033-015-021,NA,3,dependent,2,15,1,OUI,,,OUI,dependent,OUI,3
 033-002-130,46.7,3,dependent,0,14.8,1,OUI,,,OUI,dependent,OUI,3
-033-003-018,44.0,3,partially,2,14.7,jamais,,,,OUI,OUI,OUI,3
+033-003-018,44,3,partially,2,14.7,jamais,,,,OUI,OUI,OUI,3
 033-008-104,NA,3,dependent,3,14.7, >1,OUI,,,OUI,dependent,OUI,3
 033-016-025,NA,3,partially,4,14.4,1,OUI,,,OUI,OUI,,3
 033-025-015,NA,3,dependent,2,14,1,OUI,,,OUI,dependent,OUI,3
 033-008-025,NA,3,dependent,0,13.9,1,OUI,,,OUI,dependent,OUI,3
-033-010-035,40.0,3,dependent,3,13.7, >1,OUI,,,OUI,dependent,OUI,3
+033-010-035,40,3,dependent,3,13.7, >1,OUI,,,OUI,dependent,OUI,3
 033-008-016,NA,3,partially,3,13.6,jamais,,,,OUI,OUI,OUI,3
 033-008-023,NA,3,partially,1,13.5,jamais,,,,OUI,OUI,OUI,3
 033-033-021,NA,3,partially,2,13.5,jamais,,,,OUI,OUI,OUI,3
@@ -1584,7 +1584,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-045,NA,3,dependent,2,10.7,jamais,,OUI,,OUI,dependent,OUI,3
 033-020-003,NA,3,dependent,0,10.6,jamais,,OUI,,OUI,dependent,OUI,3
 033-034-044,NA,3,partially,NA,10.5,jamais,,OUI,,OUI,OUI,,3
-033-038-002,32.0,3,dependent,NA,10.1,jamais,,OUI,OUI,OUI,dependent,,3
+033-038-002,32,3,dependent,NA,10.1,jamais,,OUI,OUI,OUI,dependent,,3
 033-002-087,NA,3,partially,4,9.9,jamais,,OUI,,OUI,OUI,,3
 033-008-114,NA,3,dependent,3,9.9,jamais,,OUI,,OUI,dependent,OUI,3
 033-009-035,NA,3,dependent,2,9.8,jamais,,OUI,,OUI,dependent,OUI,3
@@ -1606,7 +1606,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-001-076,NA,3,dependent,3,NA,jamais,,,,OUI,dependent,OUI,2
 033-008-113,NA,3,dependent,3,NA,jamais,,,,OUI,dependent,OUI,2
 033-008-162,NA,3,dependent,3,NA,jamais,,,,OUI,dependent,OUI,2
-033-010-060,43.0,3,dependent,0,NA,jamais,,,,OUI,dependent,OUI,2
+033-010-060,43,3,dependent,0,NA,jamais,,,,OUI,dependent,OUI,2
 033-017-022,NA,3,totally,NA,NA,jamais,,,,OUI,OUI,,2
 033-017-110,NA,3,totally,NA,NA,NA,NA,,,OUI,OUI,,2
 033-017-129,NA,3,totally,NA,NA,NA,NA,,,OUI,OUI,,2
@@ -1642,15 +1642,15 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-015-088,NA,3,dependent,3,17.5,jamais,,,,OUI,dependent,OUI,2
 033-037-004,NA,3,dependent,3,15.6,jamais,,,,OUI,dependent,OUI,2
 033-022-066,NA,3,dependent,5,15.5,1,OUI,,,OUI,dependent,,2
-033-010-004,42.0,3,partially,5,15.3,jamais,,,,OUI,OUI,,2
+033-010-004,42,3,partially,5,15.3,jamais,,,,OUI,OUI,,2
 033-015-059,NA,3,dependent,5,15.2,1,OUI,,,OUI,dependent,,2
 033-020-091,NA,3,dependent,1,15.1,jamais,,,,OUI,dependent,OUI,2
 033-015-075,NA,3,dependent,3,14.8,jamais,,,,OUI,dependent,OUI,2
-033-025-052,82.0,3,dependent,0,14.6,jamais,,,,OUI,dependent,OUI,2
+033-025-052,82,3,dependent,0,14.6,jamais,,,,OUI,dependent,OUI,2
 033-020-160,NA,3,dependent,3,14.5,jamais,,,,OUI,dependent,OUI,2
 033-033-037,NA,3,dependent,0,14.4,jamais,,,,OUI,dependent,OUI,2
 033-033-058,NA,3,dependent,0,14.4,jamais,,,,OUI,dependent,OUI,2
-033-010-021,39.0,3,partially,5,14,jamais,,,,OUI,OUI,,2
+033-010-021,39,3,partially,5,14,jamais,,,,OUI,OUI,,2
 033-020-089,NA,3,partially,4,14,jamais,,,,OUI,OUI,,2
 033-001-100,NA,3,dependent,0,14,jamais,,,,OUI,dependent,OUI,2
 033-002-080,NA,3,dependent,4,14,1,OUI,,,OUI,dependent,,2
@@ -1666,10 +1666,10 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-015-041,NA,3,dependent,2,13.4,jamais,,,,OUI,dependent,OUI,2
 033-020-057,NA,3,dependent,0,13.4,jamais,,,,OUI,dependent,OUI,2
 033-017-051,NA,3,dependent,3,13.3,jamais,,,,OUI,dependent,OUI,2
-033-009-078,31.0,3,dependent,4,13.3,jamais,,,OUI,OUI,dependent,,2
+033-009-078,31,3,dependent,4,13.3,jamais,,,OUI,OUI,dependent,,2
 033-017-093,NA,3,partially,NA,13.2,jamais,,,,OUI,OUI,,2
 033-037-070,NA,3,dependent,2,13.2,jamais,,,,OUI,dependent,OUI,2
-033-017-047,45.0,3,dependent,0,13.1,jamais,,,,OUI,dependent,OUI,2
+033-017-047,45,3,dependent,0,13.1,jamais,,,,OUI,dependent,OUI,2
 033-008-075,NA,3,dependent,5,13.1, >1,OUI,,,OUI,dependent,,2
 033-027-012,NA,3,partially,5,13,jamais,,,,OUI,OUI,,2
 033-008-164,NA,3,dependent,0,13,jamais,,,,OUI,dependent,OUI,2
@@ -1683,7 +1683,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-019,NA,3,dependent,3,12.5,jamais,,,,OUI,dependent,OUI,2
 033-037-170,NA,3,dependent,3,12.5,jamais,,,,OUI,dependent,OUI,2
 033-002-024,NA,3,partially,5,12.4,jamais,,,,OUI,OUI,,2
-033-010-025,41.0,3,partially,4,12.4,jamais,,,,OUI,OUI,,2
+033-010-025,41,3,partially,4,12.4,jamais,,,,OUI,OUI,,2
 033-022-037,NA,3,dependent,1,12.4,jamais,,,,OUI,dependent,OUI,2
 033-008-069,NA,3,partially,4,12.2,jamais,,,,OUI,OUI,,2
 033-017-065,NA,3,dependent,NA,12.2,1,OUI,,,OUI,dependent,,2
@@ -1693,13 +1693,13 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-001-111,NA,3,dependent,1,12,jamais,,,,OUI,dependent,OUI,2
 033-033-080,NA,3,dependent,1,12,jamais,,,,OUI,dependent,OUI,2
 033-008-007,NA,3,dependent,1,11.9,jamais,,,,OUI,dependent,OUI,2
-033-017-126,40.0,3,partially,NA,11.7,NA,NA,,,OUI,OUI,,2
+033-017-126,40,3,partially,NA,11.7,NA,NA,,,OUI,OUI,,2
 033-034-033,NA,3,partially,NA,11.7,jamais,,,,OUI,OUI,,2
 033-002-123,NA,3,dependent,3,11.7,jamais,,,,OUI,dependent,OUI,2
 033-033-079,NA,3,dependent,1,11.7,jamais,,,,OUI,dependent,OUI,2
 033-025-084,NA,3,dependent,NA,11.5,jamais,,OUI,,OUI,dependent,,2
 033-002-045,NA,3,dependent,4,11.2,jamais,,OUI,,OUI,dependent,,2
-033-023-038,41.0,3,dependent,5,11.1,jamais,,OUI,,OUI,dependent,,2
+033-023-038,41,3,dependent,5,11.1,jamais,,OUI,,OUI,dependent,,2
 033-033-040,NA,3,dependent,5,11.1,jamais,,OUI,,OUI,dependent,,2
 033-019-025,NA,3,dependent,4,11,jamais,,OUI,,OUI,dependent,,2
 033-009-056,NA,3,dependent,5,11,jamais,,OUI,,OUI,dependent,,2
@@ -1707,7 +1707,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-009-036,NA,3,dependent,4,10.5,jamais,,OUI,,OUI,dependent,,2
 033-001-053,NA,3,dependent,5,10.4,jamais,,OUI,,OUI,dependent,,2
 033-021-007,NA,3,dependent,5,10,jamais,,OUI,,OUI,dependent,,2
-033-009-024,38.0,3,dependent,4,9.9,jamais,,OUI,,OUI,dependent,,2
+033-009-024,38,3,dependent,4,9.9,jamais,,OUI,,OUI,dependent,,2
 033-034-067,NA,3,dependent,NA,9.8,jamais,,OUI,,OUI,dependent,,2
 033-017-076,NA,3,dependent,NA,9.1,NA,NA,OUI,,OUI,dependent,,2
 033-001-013,NA,3,dependent,4,NA,jamais,,,,OUI,dependent,,1
@@ -1760,7 +1760,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-015-029,NA,3,dependent,4,14.1,jamais,,,,OUI,dependent,,1
 033-008-145,NA,3,dependent,4,14,jamais,,,,OUI,dependent,,1
 033-002-109,NA,3,dependent,5,14,jamais,,,,OUI,dependent,,1
-033-038-025,40.0,3,dependent,5,14,jamais,,,,OUI,dependent,,1
+033-038-025,40,3,dependent,5,14,jamais,,,,OUI,dependent,,1
 033-017-078,NA,3,dependent,5,13.9,jamais,,,,OUI,dependent,,1
 033-020-096,NA,3,dependent,4,13.9,jamais,,,,OUI,dependent,,1
 033-033-054,NA,3,dependent,4,13.9,jamais,,,,OUI,dependent,,1
@@ -1774,8 +1774,8 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-033-044,NA,3,dependent,4,13.2,jamais,,,,OUI,dependent,,1
 033-010-018,NA,3,dependent,5,13.2,jamais,,,,OUI,dependent,,1
 033-023-019,NA,3,dependent,NA,13.2,jamais,,,,OUI,dependent,,1
-033-017-054,47.0,3,dependent,NA,13.1,NA,NA,,,OUI,dependent,,1
-033-006-403,40.0,3,dependent,5,13.1,jamais,,,,OUI,dependent,,1
+033-017-054,47,3,dependent,NA,13.1,NA,NA,,,OUI,dependent,,1
+033-006-403,40,3,dependent,5,13.1,jamais,,,,OUI,dependent,,1
 033-019-026,NA,3,dependent,5,13,jamais,,,,OUI,dependent,,1
 033-029-014,NA,3,dependent,5,12.9,jamais,,,,OUI,dependent,,1
 033-002-098,44.1,3,dependent,4,12.8,jamais,,,,OUI,dependent,,1
@@ -1788,7 +1788,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-003-014,NA,3,dependent,5,12.2,jamais,,,,OUI,dependent,,1
 033-033-023,NA,3,dependent,5,11.7,jamais,,,,OUI,dependent,,1
 033-003-052,NA,3,dependent,5,11.7,jamais,,,,OUI,dependent,,1
-033-009-016,27.0,4,partially,2,9.8, >1,OUI,OUI,OUI,OUI,OUI,OUI,6
+033-009-016,27,4,partially,2,9.8, >1,OUI,OUI,OUI,OUI,OUI,OUI,6
 033-008-062,30.3,4,totally,0,12.2, >1,OUI,,OUI,OUI,OUI,OUI,5
 033-016-020,NA,4,partially,0,11.6, >1,OUI,,,OUI,OUI,OUI,4
 033-030-054,NA,4,partially,3,11.6, >1,OUI,,,OUI,OUI,OUI,4
@@ -1798,23 +1798,23 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-037,NA,4,totally,0,10.8,1,OUI,OUI,,OUI,OUI,OUI,5
 033-033-006,NA,4,partially,2,10.7, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-002-042,NA,4,partially,1,10.4, >1,OUI,OUI,,OUI,OUI,OUI,5
-033-017-138,39.0,4,partially,1,10.4,1,OUI,OUI,,OUI,OUI,OUI,5
-033-017-028,41.0,4,totally,0,10.4,1,OUI,OUI,,OUI,OUI,OUI,5
+033-017-138,39,4,partially,1,10.4,1,OUI,OUI,,OUI,OUI,OUI,5
+033-017-028,41,4,totally,0,10.4,1,OUI,OUI,,OUI,OUI,OUI,5
 033-016-012,33.6,4,partially,1,10, >1,OUI,OUI,,OUI,OUI,OUI,5
-033-002-013,27.0,4,totally,0,9.1,jamais,,OUI,OUI,OUI,OUI,OUI,5
+033-002-013,27,4,totally,0,9.1,jamais,,OUI,OUI,OUI,OUI,OUI,5
 033-027-048,NA,4,partially,0,9, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-034-082,NA,4,partially,0,8.9,1,OUI,OUI,,OUI,OUI,OUI,5
-033-017-101,34.0,4,partially,0,8.4,1,OUI,OUI,,OUI,OUI,OUI,5
-033-010-051,30.0,4,totally,0,7.7,jamais,,OUI,OUI,OUI,OUI,OUI,5
+033-017-101,34,4,partially,0,8.4,1,OUI,OUI,,OUI,OUI,OUI,5
+033-010-051,30,4,totally,0,7.7,jamais,,OUI,OUI,OUI,OUI,OUI,5
 033-005-051,NA,4,partially,3,NA,1,OUI,,,OUI,OUI,OUI,4
 033-020-165,NA,4,partially,0,NA,1,OUI,,,OUI,OUI,OUI,4
 033-037-130,NA,4,partially,0,15.9,1,OUI,,,OUI,OUI,OUI,4
 033-008-032,NA,4,partially,2,13.1, >1,OUI,,,OUI,OUI,OUI,4
 033-016-031,NA,4,partially,1,12.9,1,OUI,,,OUI,OUI,OUI,4
-033-017-032,38.0,4,totally,0,12.9, >1,OUI,,,OUI,OUI,OUI,4
+033-017-032,38,4,totally,0,12.9, >1,OUI,,,OUI,OUI,OUI,4
 033-002-059,NA,4,partially,1,12.8, >1,OUI,,,OUI,OUI,OUI,4
 033-027-044,NA,4,partially,0,12.7, >1,OUI,,,OUI,OUI,OUI,4
-033-023-025,33.0,4,dependent,3,12.7, >1,OUI,,OUI,OUI,dependent,OUI,4
+033-023-025,33,4,dependent,3,12.7, >1,OUI,,OUI,OUI,dependent,OUI,4
 033-020-107,NA,4,partially,0,12.3, >1,OUI,,,OUI,OUI,OUI,4
 033-018-032,NA,4,totally,0,12.2,1,OUI,,,OUI,OUI,OUI,4
 033-027-039,25.6,4,totally,1,12.1,jamais,,,OUI,OUI,OUI,OUI,4
@@ -1823,11 +1823,11 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-018-034,NA,4,partially,2,11.9, >1,OUI,,,OUI,OUI,OUI,4
 033-031-005,NA,4,partially,0,11.5,jamais,,OUI,,OUI,OUI,OUI,4
 033-037-022,NA,4,totally,1,11.4,jamais,,OUI,,OUI,OUI,OUI,4
-033-017-014,21.0,4,totally,NA,11.4,NA,NA,OUI,OUI,OUI,OUI,,4
+033-017-014,21,4,totally,NA,11.4,NA,NA,OUI,OUI,OUI,OUI,,4
 033-027-034,NA,4,partially,1,11.3,jamais,,OUI,,OUI,OUI,OUI,4
 033-020-152,NA,4,dependent,3,11.2,1,OUI,OUI,,OUI,dependent,OUI,4
 033-002-017,NA,4,partially,4,11.1,1,OUI,OUI,,OUI,OUI,,4
-033-010-077,40.0,4,dependent,3,11.1, >1,OUI,OUI,,OUI,dependent,OUI,4
+033-010-077,40,4,dependent,3,11.1, >1,OUI,OUI,,OUI,dependent,OUI,4
 033-008-106,NA,4,dependent,0,10.9, >1,OUI,OUI,,OUI,dependent,OUI,4
 033-023-051,NA,4,totally,0,10.9,jamais,,OUI,,OUI,OUI,OUI,4
 033-002-038,NA,4,partially,2,10.7,jamais,,OUI,,OUI,OUI,OUI,4
@@ -1845,7 +1845,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-006-014,NA,4,partially,3,9,jamais,,OUI,,OUI,OUI,OUI,4
 033-019-015,31.1,4,totally,4,8.9,jamais,,OUI,OUI,OUI,OUI,,4
 033-025-081,NA,4,totally,2,8.8,jamais,,OUI,,OUI,OUI,OUI,4
-033-009-006,30.0,4,dependent,1,8.2,jamais,,OUI,OUI,OUI,dependent,OUI,4
+033-009-006,30,4,dependent,1,8.2,jamais,,OUI,OUI,OUI,dependent,OUI,4
 033-007-005,NA,4,partially,0,NA,jamais,,,,OUI,OUI,OUI,3
 033-020-118,NA,4,partially,4,NA, >1,OUI,,,OUI,OUI,,3
 033-020-129,NA,4,partially,NA,NA,1,OUI,,,OUI,OUI,,3
@@ -1868,7 +1868,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-034-036,35.7,4,totally,NA,13.2, >1,OUI,,,OUI,OUI,,3
 033-015-076,NA,4,partially,1,12.8,jamais,,,,OUI,OUI,OUI,3
 033-006-008,NA,4,partially,5,12.8, >1,OUI,,,OUI,OUI,,3
-033-010-072,39.0,4,partially,2,12.6,jamais,,,,OUI,OUI,OUI,3
+033-010-072,39,4,partially,2,12.6,jamais,,,,OUI,OUI,OUI,3
 033-017-090,NA,4,partially,2,12.5,jamais,,,,OUI,OUI,OUI,3
 033-008-154,NA,4,dependent,2,12.5, >1,OUI,,,OUI,dependent,OUI,3
 033-017-033,NA,4,dependent,0,12.5,1,OUI,,,OUI,dependent,OUI,3
@@ -1877,14 +1877,14 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-011,NA,4,dependent,0,11.9, >1,OUI,,,OUI,dependent,OUI,3
 033-037-014,NA,4,partially,2,11.7,jamais,,,,OUI,OUI,OUI,3
 033-033-049,NA,4,dependent,1,11.5,jamais,,OUI,,OUI,dependent,OUI,3
-033-023-039,39.0,4,dependent,2,11.4,jamais,,OUI,,OUI,dependent,OUI,3
+033-023-039,39,4,dependent,2,11.4,jamais,,OUI,,OUI,dependent,OUI,3
 033-037-117,NA,4,dependent,3,11.4,jamais,,OUI,,OUI,dependent,OUI,3
 033-008-115,NA,4,dependent,4,11.3,1,OUI,OUI,,OUI,dependent,,3
 033-024-013,NA,4,dependent,1,11.2,jamais,,OUI,,OUI,dependent,OUI,3
 033-019-008,NA,4,dependent,0,10.9,jamais,,OUI,,OUI,dependent,OUI,3
 033-001-101,NA,4,dependent,2,10.2,jamais,,OUI,,OUI,dependent,OUI,3
 033-023-045,NA,4,dependent,1,10.2,jamais,,OUI,,OUI,dependent,OUI,3
-033-033-019,31.0,4,dependent,5,10.2,jamais,,OUI,OUI,OUI,dependent,,3
+033-033-019,31,4,dependent,5,10.2,jamais,,OUI,OUI,OUI,dependent,,3
 033-008-017,NA,4,dependent,3,9.9,jamais,,OUI,,OUI,dependent,OUI,3
 033-023-001,NA,4,partially,5,9.8,jamais,,OUI,,OUI,OUI,,3
 033-034-047,NA,4,partially,NA,9.7,jamais,,OUI,,OUI,OUI,,3
@@ -1918,18 +1918,18 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-029-006,NA,4,partially,5,13.5,jamais,,,,OUI,OUI,,2
 033-020-164,NA,4,dependent,3,13.1,jamais,,,,OUI,dependent,OUI,2
 033-037-036,NA,4,dependent,4,13.1, >1,OUI,,,OUI,dependent,,2
-033-017-139,42.0,4,partially,NA,12.9,NA,NA,,,OUI,OUI,,2
+033-017-139,42,4,partially,NA,12.9,NA,NA,,,OUI,OUI,,2
 033-017-050,NA,4,dependent,3,12.8,jamais,,,,OUI,dependent,OUI,2
 033-020-127,NA,4,dependent,3,12.7,jamais,,,,OUI,dependent,OUI,2
 033-018-016,NA,4,dependent,2,12.6,jamais,,,,OUI,dependent,OUI,2
 033-018-043,NA,4,partially,NA,12.4,jamais,,,,OUI,OUI,,2
 033-007-020,NA,4,partially,4,12.3,jamais,,,,OUI,OUI,,2
-033-020-117,42.0,4,dependent,1,12.3,jamais,,,,OUI,dependent,OUI,2
+033-020-117,42,4,dependent,1,12.3,jamais,,,,OUI,dependent,OUI,2
 033-002-053,NA,4,partially,5,12.2,jamais,,,,OUI,OUI,,2
 033-002-026,NA,4,dependent,4,12.2, >1,OUI,,,OUI,dependent,,2
 033-002-076,NA,4,dependent,3,12.2,jamais,,,,OUI,dependent,OUI,2
 033-030-064,NA,4,dependent,NA,12.1, >1,OUI,,,OUI,dependent,,2
-033-017-125,42.0,4,partially,NA,11.7,NA,NA,,,OUI,OUI,,2
+033-017-125,42,4,partially,NA,11.7,NA,NA,,,OUI,OUI,,2
 033-008-083,NA,4,dependent,5,11.5,jamais,,OUI,,OUI,dependent,,2
 033-027-026,NA,4,dependent,4,11.1,jamais,,OUI,,OUI,dependent,,2
 033-010-010,NA,4,dependent,5,10.7,jamais,,OUI,,OUI,dependent,,2
@@ -1958,7 +1958,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-022-077,NA,4,dependent,5,14.7,jamais,,,,OUI,dependent,,1
 033-017-055,NA,4,dependent,5,14.7,jamais,,,,OUI,dependent,,1
 033-020-124,NA,4,dependent,4,14.6,jamais,,,,OUI,dependent,,1
-033-017-038,42.0,4,dependent,NA,13.9,NA,NA,,,OUI,dependent,,1
+033-017-038,42,4,dependent,NA,13.9,NA,NA,,,OUI,dependent,,1
 033-017-114,NA,4,dependent,NA,13.4,NA,NA,,,OUI,dependent,,1
 033-020-176,NA,4,dependent,5,13.4,jamais,,,,OUI,dependent,,1
 033-017-098,NA,4,dependent,4,13.2,jamais,,,,OUI,dependent,,1
@@ -1968,15 +1968,15 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-040,NA,4,dependent,5,12.7,jamais,,,,OUI,dependent,,1
 033-033-032,NA,4,dependent,5,12.5,jamais,,,,OUI,dependent,,1
 033-017-096,NA,4,NA,NA,12.3,NA,NA,,,OUI,NA,,1
-033-017-124,44.0,4,dependent,NA,12.3,NA,NA,,,OUI,dependent,,1
+033-017-124,44,4,dependent,NA,12.3,NA,NA,,,OUI,dependent,,1
 033-015-054,NA,4,dependent,5,12.1,jamais,,,,OUI,dependent,,1
 033-025-078,NA,4,dependent,4,12,jamais,,,,OUI,dependent,,1
 033-018-028,32.4,5,partially,0,11.3, >1,OUI,OUI,OUI,OUI,OUI,OUI,6
-033-034-079,29.0,5,partially,0,11.2, >1,OUI,OUI,OUI,OUI,OUI,OUI,6
+033-034-079,29,5,partially,0,11.2, >1,OUI,OUI,OUI,OUI,OUI,OUI,6
 033-036-003,31.1,5,totally,2,10.4, >1,OUI,OUI,OUI,OUI,OUI,OUI,6
-033-010-065,33.0,5,totally,0,13.6,1,OUI,,OUI,OUI,OUI,OUI,5
+033-010-065,33,5,totally,0,13.6,1,OUI,,OUI,OUI,OUI,OUI,5
 033-007-003,32.1,5,partially,0,12.2,1,OUI,,OUI,OUI,OUI,OUI,5
-033-017-081,38.0,5,partially,0,11.5,1,OUI,OUI,,OUI,OUI,OUI,5
+033-017-081,38,5,partially,0,11.5,1,OUI,OUI,,OUI,OUI,OUI,5
 033-008-063,40.6,5,totally,0,11.5,1,OUI,OUI,,OUI,OUI,OUI,5
 033-018-024,NA,5,totally,0,11.4,1,OUI,OUI,,OUI,OUI,OUI,5
 033-027-013,NA,5,totally,0,11.2, >1,OUI,OUI,,OUI,OUI,OUI,5
@@ -1984,18 +1984,18 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-008-047,NA,5,totally,0,10.3, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-008-107,NA,5,totally,0,10.1, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-008-010,NA,5,partially,2,9.9, >1,OUI,OUI,,OUI,OUI,OUI,5
-033-017-023,33.0,5,partially,NA,9.9,1,OUI,OUI,OUI,OUI,OUI,,5
-033-034-071,35.0,5,partially,1,9.3,1,OUI,OUI,,OUI,OUI,OUI,5
-033-033-065,25.0,5,partially,4,8.3, >1,OUI,OUI,OUI,OUI,OUI,,5
+033-017-023,33,5,partially,NA,9.9,1,OUI,OUI,OUI,OUI,OUI,,5
+033-034-071,35,5,partially,1,9.3,1,OUI,OUI,,OUI,OUI,OUI,5
+033-033-065,25,5,partially,4,8.3, >1,OUI,OUI,OUI,OUI,OUI,,5
 033-036-013,NA,5,partially,3,NA, >1,OUI,,,OUI,OUI,OUI,4
 033-010-056,NA,5,totally,0,NA,1,OUI,,,OUI,OUI,OUI,4
 033-001-048,NA,5,partially,1,13.8,1,OUI,,,OUI,OUI,OUI,4
 033-008-173,NA,5,partially,0,13.3, >1,OUI,,,OUI,OUI,OUI,4
-033-017-008,36.0,5,partially,0,13.3, >1,OUI,,,OUI,OUI,OUI,4
+033-017-008,36,5,partially,0,13.3, >1,OUI,,,OUI,OUI,OUI,4
 033-027-041,NA,5,partially,1,13.2,1,OUI,,,OUI,OUI,OUI,4
 033-006-500,NA,5,partially,0,12.4, >1,OUI,,,OUI,OUI,OUI,4
 033-008-125,NA,5,partially,3,12.3, >1,OUI,,,OUI,OUI,OUI,4
-033-010-071,34.0,5,partially,1,12.3,1,OUI,,,OUI,OUI,OUI,4
+033-010-071,34,5,partially,1,12.3,1,OUI,,,OUI,OUI,OUI,4
 033-008-135,NA,5,totally,0,12, >1,OUI,,,OUI,OUI,OUI,4
 033-033-076,NA,5,totally,0,11.9,1,OUI,,,OUI,OUI,OUI,4
 033-006-010,NA,5,partially,0,11.8,1,OUI,,,OUI,OUI,OUI,4
@@ -2003,34 +2003,34 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-009-023,NA,5,dependent,3,11.5,1,OUI,OUI,,OUI,dependent,OUI,4
 033-007-004,NA,5,partially,0,11.3,jamais,,OUI,,OUI,OUI,OUI,4
 033-029-028,NA,5,totally,2,11.3,jamais,,OUI,,OUI,OUI,OUI,4
-033-037-124,35.0,5,partially,3,11,jamais,,OUI,,OUI,OUI,OUI,4
+033-037-124,35,5,partially,3,11,jamais,,OUI,,OUI,OUI,OUI,4
 033-019-022,NA,5,partially,0,10.9,jamais,,OUI,,OUI,OUI,OUI,4
 033-002-089,NA,5,partially,1,10.6,jamais,,OUI,,OUI,OUI,OUI,4
-033-033-028,36.0,5,partially,1,10,jamais,,OUI,,OUI,OUI,OUI,4
+033-033-028,36,5,partially,1,10,jamais,,OUI,,OUI,OUI,OUI,4
 033-037-038,NA,5,partially,3,10,jamais,,OUI,,OUI,OUI,OUI,4
 033-008-142,NA,5,dependent,0,10,1,OUI,OUI,,OUI,dependent,OUI,4
 033-008-119,19.2,5,dependent,1,10,jamais,,OUI,OUI,OUI,dependent,OUI,4
-033-010-055,36.0,5,partially,1,9.9,jamais,,OUI,,OUI,OUI,OUI,4
+033-010-055,36,5,partially,1,9.9,jamais,,OUI,,OUI,OUI,OUI,4
 033-025-056,NA,5,totally,0,9.9,jamais,,OUI,,OUI,OUI,OUI,4
-033-003-023,26.0,5,dependent,1,9.9,jamais,,OUI,OUI,OUI,dependent,OUI,4
-033-017-046,33.0,5,partially,NA,9.2,NA,NA,OUI,OUI,OUI,OUI,,4
+033-003-023,26,5,dependent,1,9.9,jamais,,OUI,OUI,OUI,dependent,OUI,4
+033-017-046,33,5,partially,NA,9.2,NA,NA,OUI,OUI,OUI,OUI,,4
 033-034-058,32.9,5,totally,NA,8.4,jamais,,OUI,OUI,OUI,OUI,,4
-033-003-009,29.0,5,dependent,2,8.1,jamais,,OUI,OUI,OUI,dependent,OUI,4
+033-003-009,29,5,dependent,2,8.1,jamais,,OUI,OUI,OUI,dependent,OUI,4
 033-005-062,NA,5,partially,4,NA, >1,OUI,,,OUI,OUI,,3
 033-010-044,NA,5,partially,3,NA,jamais,,,,OUI,OUI,OUI,3
 033-003-050,NA,5,partially,3,NA,jamais,,,,OUI,OUI,OUI,3
 033-025-073,NA,5,totally,5,NA, >1,OUI,,,OUI,OUI,,3
 033-001-032,NA,5,partially,3,16,jamais,,,,OUI,OUI,OUI,3
-033-014-016,42.0,5,partially,2,14.1,jamais,,,,OUI,OUI,OUI,3
-033-010-034,39.0,5,partially,4,14.1, >1,OUI,,,OUI,OUI,,3
+033-014-016,42,5,partially,2,14.1,jamais,,,,OUI,OUI,OUI,3
+033-010-034,39,5,partially,4,14.1, >1,OUI,,,OUI,OUI,,3
 033-033-051,NA,5,partially,4,13.9,1,OUI,,,OUI,OUI,,3
-033-033-055,44.0,5,partially,3,13.8,jamais,,,,OUI,OUI,OUI,3
+033-033-055,44,5,partially,3,13.8,jamais,,,,OUI,OUI,OUI,3
 033-027-046,NA,5,partially,5,13.8, >1,OUI,,,OUI,OUI,,3
-033-033-027,35.0,5,totally,0,13.4,jamais,,,,OUI,OUI,OUI,3
+033-033-027,35,5,totally,0,13.4,jamais,,,,OUI,OUI,OUI,3
 033-018-046,NA,5,partially,5,13,1,OUI,,,OUI,OUI,,3
 033-018-009,NA,5,totally,NA,13,1,OUI,,,OUI,OUI,,3
 033-037-126,NA,5,partially,3,12.7,jamais,,,,OUI,OUI,OUI,3
-033-017-094,40.0,5,partially,0,12.2,jamais,,,,OUI,OUI,OUI,3
+033-017-094,40,5,partially,0,12.2,jamais,,,,OUI,OUI,OUI,3
 033-020-018,NA,5,partially,NA,12,1,OUI,,,OUI,OUI,,3
 033-001-120,NA,5,totally,0,11.8,jamais,,,,OUI,OUI,OUI,3
 033-020-039,NA,5,totally,3,11.7,jamais,,,,OUI,OUI,OUI,3
@@ -2041,7 +2041,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-038-015,NA,5,dependent,2,10.2,jamais,,OUI,,OUI,dependent,OUI,3
 033-003-068,NA,5,dependent,0,10.1,jamais,,OUI,,OUI,dependent,OUI,3
 033-001-104,NA,5,dependent,2,9.6,jamais,,OUI,,OUI,dependent,OUI,3
-033-017-133,41.0,5,totally,NA,9,NA,NA,OUI,,OUI,OUI,,3
+033-017-133,41,5,totally,NA,9,NA,NA,OUI,,OUI,OUI,,3
 033-020-095,NA,5,dependent,2,8.6,jamais,,OUI,,OUI,dependent,OUI,3
 033-020-060,NA,5,partially,NA,NA,jamais,,,,OUI,OUI,,2
 033-018-040,NA,5,partially,NA,NA,jamais,,,,OUI,OUI,,2
@@ -2054,7 +2054,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-002-040,NA,5,dependent,2,15,jamais,,,,OUI,dependent,OUI,2
 033-034-065,NA,5,partially,5,14.5,jamais,,,,OUI,OUI,,2
 033-010-075,NA,5,dependent,0,14.5,jamais,,,,OUI,dependent,OUI,2
-033-017-034,48.0,5,dependent,3,14.3,jamais,,,,OUI,dependent,OUI,2
+033-017-034,48,5,dependent,3,14.3,jamais,,,,OUI,dependent,OUI,2
 033-033-057,NA,5,dependent,0,13.7,jamais,,,,OUI,dependent,OUI,2
 033-002-090,37.8,5,totally,4,13.5,jamais,,,,OUI,OUI,,2
 033-017-056,NA,5,dependent,5,13.5,1,OUI,,,OUI,dependent,,2
@@ -2071,7 +2071,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-033-067,NA,5,dependent,4,10.2,jamais,,OUI,,OUI,dependent,,2
 033-019-006,NA,5,dependent,4,10,jamais,,OUI,,OUI,dependent,,2
 033-001-055,NA,5,dependent,5,NA,jamais,,,,OUI,dependent,,1
-033-010-002,45.0,5,dependent,5,NA,jamais,,,,OUI,dependent,,1
+033-010-002,45,5,dependent,5,NA,jamais,,,,OUI,dependent,,1
 033-020-004,NA,5,dependent,4,NA,jamais,,,,OUI,dependent,,1
 033-003-012,NA,5,dependent,4,NA,jamais,,,,OUI,dependent,,1
 033-005-084,NA,5,dependent,4,17.7,jamais,,,,OUI,dependent,,1
@@ -2080,7 +2080,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-010-054,NA,5,dependent,4,14,jamais,,,,OUI,dependent,,1
 033-034-038,NA,5,dependent,5,13.6,jamais,,,,OUI,dependent,,1
 033-009-054,NA,5,dependent,5,12.2,jamais,,,,OUI,dependent,,1
-033-017-026,33.0,6,partially,0,12, >1,OUI,,OUI,OUI,OUI,OUI,5
+033-017-026,33,6,partially,0,12, >1,OUI,,OUI,OUI,OUI,OUI,5
 033-018-027,32.8,6,partially,NA,10.9, >1,OUI,OUI,OUI,OUI,OUI,,5
 033-036-033,35.5,6,totally,0,10.6, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-018-010,NA,6,partially,2,10,1,OUI,OUI,,OUI,OUI,OUI,5
@@ -2096,7 +2096,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-018-042,30.5,6,partially,1,12.5,jamais,,,OUI,OUI,OUI,OUI,4
 033-020-146,NA,6,partially,2,12.2,1,OUI,,,OUI,OUI,OUI,4
 033-002-072,NA,6,dependent,2,11.5,1,OUI,OUI,,OUI,dependent,OUI,4
-033-017-092,38.0,6,partially,1,11.3,jamais,,OUI,,OUI,OUI,OUI,4
+033-017-092,38,6,partially,1,11.3,jamais,,OUI,,OUI,OUI,OUI,4
 033-034-027,NA,6,partially,NA,11.2,1,OUI,OUI,,OUI,OUI,,4
 033-036-043,NA,6,partially,3,11.2,jamais,,OUI,,OUI,OUI,OUI,4
 033-008-158,NA,6,dependent,2,11.2,1,OUI,OUI,,OUI,dependent,OUI,4
@@ -2111,16 +2111,16 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-020-106,NA,6,dependent,2,NA,1,OUI,,,OUI,dependent,OUI,3
 033-003-022,NA,6,dependent,3,NA,1,OUI,,,OUI,dependent,OUI,3
 033-005-001,NA,6,dependent,2,14.3,1,OUI,,,OUI,dependent,OUI,3
-033-017-016,32.0,6,totally,4,14.3,jamais,,,OUI,OUI,OUI,,3
-033-017-140,38.0,6,totally,NA,14,1,OUI,,,OUI,OUI,,3
-033-003-070,36.0,6,partially,0,13.3,jamais,,,,OUI,OUI,OUI,3
+033-017-016,32,6,totally,4,14.3,jamais,,,OUI,OUI,OUI,,3
+033-017-140,38,6,totally,NA,14,1,OUI,,,OUI,OUI,,3
+033-003-070,36,6,partially,0,13.3,jamais,,,,OUI,OUI,OUI,3
 033-008-146,NA,6,dependent,0,12.3,1,OUI,,,OUI,dependent,OUI,3
 033-010-022,NA,6,partially,2,12,jamais,,,,OUI,OUI,OUI,3
 033-033-022,NA,6,partially,5,11.5,jamais,,OUI,,OUI,OUI,,3
 033-005-075,41.1,6,dependent,0,11.4,jamais,,OUI,,OUI,dependent,OUI,3
 033-019-011,NA,6,dependent,5,11, >1,OUI,OUI,,OUI,dependent,,3
 033-002-093,33.6,6,dependent,5,10.4,1,OUI,OUI,,OUI,dependent,,3
-033-033-004,30.0,6,dependent,5,10.2,jamais,,OUI,OUI,OUI,dependent,,3
+033-033-004,30,6,dependent,5,10.2,jamais,,OUI,OUI,OUI,dependent,,3
 033-017-044,NA,6,dependent,1,8.8,jamais,,OUI,,OUI,dependent,OUI,3
 033-023-020,NA,6,partially,4,8.5,jamais,,OUI,,OUI,OUI,,3
 033-017-113,NA,6,partially,NA,7.8,NA,NA,OUI,,OUI,OUI,,3
@@ -2149,7 +2149,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-005-016,NA,6,dependent,5,NA,jamais,,,,OUI,dependent,,1
 033-010-014,NA,6,dependent,5,NA,jamais,,,,OUI,dependent,,1
 033-033-016,NA,6,dependent,5,16,jamais,,,,OUI,dependent,,1
-033-003-021,39.0,6,dependent,5,15.6,jamais,,,,OUI,dependent,,1
+033-003-021,39,6,dependent,5,15.6,jamais,,,,OUI,dependent,,1
 033-025-012,NA,6,dependent,5,13.6,jamais,,,,OUI,dependent,,1
 033-034-041,NA,6,dependent,NA,13.5,jamais,,,,OUI,dependent,,1
 033-033-069,NA,6,dependent,4,12.6,jamais,,,,OUI,dependent,,1
@@ -2158,7 +2158,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-038-006,NA,6,dependent,4,11.8,jamais,,,,OUI,dependent,,1
 033-003-067,NA,6,dependent,5,11.7,jamais,,,,OUI,dependent,,1
 033-005-006,NA,7,partially,0,11.4,1,OUI,OUI,,OUI,OUI,OUI,5
-033-018-004,30.0,7,partially,NA,10.9, >1,OUI,OUI,OUI,OUI,OUI,,5
+033-018-004,30,7,partially,NA,10.9, >1,OUI,OUI,OUI,OUI,OUI,,5
 033-008-103,NA,7,totally,0,10.7,1,OUI,OUI,,OUI,OUI,OUI,5
 033-027-017,23.3,7,totally,0,8.1,jamais,,OUI,OUI,OUI,OUI,OUI,5
 033-001-056,NA,7,partially,1,NA,1,OUI,,,OUI,OUI,OUI,4
@@ -2183,19 +2183,19 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-005-080,NA,7,dependent,5,NA,jamais,,,,OUI,dependent,,1
 033-005-085,NA,7,dependent,5,NA,jamais,,,,OUI,dependent,,1
 033-037-025,NA,7,dependent,5,NA,jamais,,,,OUI,dependent,,1
-033-033-012,43.0,7,dependent,4,16.7,jamais,,,,OUI,dependent,,1
+033-033-012,43,7,dependent,4,16.7,jamais,,,,OUI,dependent,,1
 033-005-025,NA,7,dependent,4,15.2,jamais,,,,OUI,dependent,,1
 033-005-057,NA,7,dependent,4,14.2,NA,NA,,,OUI,dependent,,1
 033-005-064,NA,7,dependent,5,13.8,jamais,,,,OUI,dependent,,1
 033-005-022,NA,7,dependent,5,13,jamais,,,,OUI,dependent,,1
 033-005-034,NA,7,dependent,4,12.9,jamais,,,,OUI,dependent,,1
 033-005-066,NA,8,totally,0,11,1,OUI,OUI,,OUI,OUI,OUI,5
-033-017-019,36.0,8,totally,0,10.5,1,OUI,OUI,,OUI,OUI,OUI,5
+033-017-019,36,8,totally,0,10.5,1,OUI,OUI,,OUI,OUI,OUI,5
 033-005-013,NA,8,partially,2,10.1, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-028-004,NA,8,partially,0,14,1,OUI,,,OUI,OUI,OUI,4
-033-017-013,28.0,8,totally,0,13.5,jamais,,,OUI,OUI,OUI,OUI,4
+033-017-013,28,8,totally,0,13.5,jamais,,,OUI,OUI,OUI,OUI,4
 033-018-049,NA,8,partially,0,12.4, >1,OUI,,,OUI,OUI,OUI,4
-033-017-084,36.0,8,totally,0,11.1,jamais,,OUI,,OUI,OUI,OUI,4
+033-017-084,36,8,totally,0,11.1,jamais,,OUI,,OUI,OUI,OUI,4
 033-005-015,NA,8,partially,NA,10.4, >1,OUI,OUI,,OUI,OUI,,4
 033-018-030,18.8,8,totally,NA,10.3,NA,NA,OUI,OUI,OUI,OUI,,4
 033-005-065,NA,8,partially,2,9.9,jamais,,OUI,,OUI,OUI,OUI,4
@@ -2219,10 +2219,10 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-005-073,NA,8,dependent,5,NA,jamais,,,,OUI,dependent,,1
 033-005-076,NA,8,dependent,4,13.8,jamais,,,,OUI,dependent,,1
 033-005-072,NA,8,dependent,5,13.3,jamais,,,,OUI,dependent,,1
-033-018-014,23.0,9,totally,3,11.1,1,OUI,OUI,OUI,OUI,OUI,OUI,6
+033-018-014,23,9,totally,3,11.1,1,OUI,OUI,OUI,OUI,OUI,OUI,6
 033-008-151,NA,9,partially,3,11.6,1,OUI,,,OUI,OUI,OUI,4
 033-005-082,32.4,9,totally,0,10.1,jamais,,OUI,OUI,OUI,OUI,OUI,5
-033-005-038,68.0,9,partially,0,9.6, >1,OUI,OUI,,OUI,OUI,OUI,5
+033-005-038,68,9,partially,0,9.6, >1,OUI,OUI,,OUI,OUI,OUI,5
 033-018-008,NA,9,partially,2,13.5, >1,OUI,,,OUI,OUI,OUI,4
 033-005-078,NA,9,dependent,1,8.8,1,OUI,OUI,,OUI,dependent,OUI,4
 033-005-017,NA,9,totally,2,NA,jamais,,,,OUI,OUI,OUI,3
@@ -2238,7 +2238,7 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-033-029,NA,9,dependent,4,13.8,jamais,,,,OUI,dependent,,1
 033-005-002,NA,9,dependent,5,13.3,jamais,,,,OUI,dependent,,1
 033-005-046,NA,9,dependent,4,12.4,jamais,,,,OUI,dependent,,1
-033-017-039,29.0,10,partially,4,10,  >1,OUI,OUI,OUI,OUI,OUI,,5
+033-017-039,29,10,partially,4,10,  >1,OUI,OUI,OUI,OUI,OUI,,5
 033-005-008,NA,10,partially,2,NA,1,OUI,,,OUI,OUI,OUI,4
 033-018-015,NA,10,partially,2,15.6,1,OUI,,,OUI,OUI,OUI,4
 033-018-025,NA,10,partially,3,9.9,jamais,,OUI,,OUI,OUI,OUI,4
@@ -2251,11 +2251,3 @@ Study Subject ID,ALBU_g.l,nb de fois oui sur les criteres de comor,Functional.st
 033-018-048,NA,11,totally,0,8.5,1,OUI,OUI,,OUI,OUI,OUI,5
 033-005-043,NA,11,partially,NA,9,NA,NA,OUI,,OUI,OUI,,3
 033-018-017,NA,12,partially,3,NA,jamais,,,,OUI,OUI,OUI,3
-,,,,,,,,,,,,,
-,,,,,,264,625,424,83,826,787,1170,
-,,,,,,0,0,0,0,0,0,0,
-,,,,,,,,,,,,,214
-,,,,,,11.7%,27.8%,18.8%,3.7%,36.7%,34.9%,52.0%,70
-,,,,,,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,7
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,12.92%
