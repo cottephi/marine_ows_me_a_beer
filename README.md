@@ -24,29 +24,13 @@ There are 215 living patients with at least one POST-OP complication
 
 There are 220 patients dead or with at least one POST-OP complication
 
-|             | Alive     | Dead |
-|-------------|-----------|------|
-| Anaemic     | 517       | 27   |
-| Not Anaemic | 722       | 12   |
-| one/two -tail P-value   | 0.32 | 8.2x10<sup>-4</sup> |
-
-|             | Complications     | Alive and well |
-|-------------|-----------|------|
-| Anaemic     | 106       | 438   |
-| Not Anaemic | 75        | 659   |
-| one/two -tail P-value   | 2.1 | 3.3x10<sup>-6</sup> |
-
-|             | Dead or complications     | Alive and well |
-|-------------|-----------|------|
-| Anaemic     | 133       | 411   |
-| Not Anaemic | 87       | 647   |
-| one/two -tail P-value | 2.4 | 5.8x10<sup>-9</sup> |
+See **tables.pdf** for results.
 
 
 ## Logistic regression
 
 ### Death vs Hb
 
-![](death_vs_hb.png)
+See **tables.pdf** for results.
 
 Vertical lines are the limit under which a male (13 g/dL) or a female (12 g/dL) patient is considered anaemic.

@@ -190,7 +190,6 @@ def fit(data: pd.DataFrame, col_to_test: str) -> Union[Tuple[float, np.ndarray],
     model.fit(x_train, y_train)
     score = round(model.score(x_test, y_test), 3)
     predict = model.predict_proba(data[["HEMOGLOBINE_PREOP"]].sort_values(by="HEMOGLOBINE_PREOP"))[:, 1]
-    print(score, type(predict))
     return score, predict
 
 
