@@ -39,7 +39,6 @@ set_censure(patients)
 drop_for_cox(patients)
 
 df_cox = fill_cox(patients)
-print(df_cox.to_string())
 df_cox.to_csv("cox_filled.csv")
 
 patients_date_only = patients[~patients["DEAD_DAYS"].isna()]
