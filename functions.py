@@ -9,6 +9,7 @@ from scipy import stats as stats
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from tablewriter import TableWriter
+import lifelines
 
 
 def printline(m):
@@ -18,9 +19,9 @@ def printline(m):
 def get_data() -> pd.DataFrame:
     """ Reads the data, selects the meaningful columns, drops duplicated columns, replaces OUI by 1 and NON by 0
     """
-    data = pd.read_csv("POSE.csv", index_col=0, parse_dates=columns_dates).loc[:, all_columns]
+    data = pd.read_csv("POSE.csv", index_col=0, parse_dates=columns_dates)
     data_fragilites = pd.read_csv("fragilites.csv", index_col=0)
-    data = pd.concat([data, data_fragilites], axis=1).T.drop_duplicates().T
+    data = pd.concat([data, data_fragilites], axis=1).T.drop_duplicates().T.loc[:, all_columns]
     printline(f"There are {len(data)} patients")
     data = data.replace("OUI", 1)
     data = data.replace("NON", 0)
@@ -41,6 +42,26 @@ def set_binned_age(data: pd.DataFrame):
         return 2
 
     data.loc[:, "BINNED_AGE"] = data.loc[:, column_age[0]].apply(f)
+    printline(f"There are {len(data[data[column_age[0]].isna()])} patients with no age information")
+
+
+def set_binned_sexe(data: pd.DataFrame):
+    """Will add the column 'BINNED_AGE' in the dataframe, discretizing the patients'age in bins [0-85[, [85-90[
+     and > 90, np.nan if unknown """
+
+    def f(x: str):
+        if not isinstance(x, str):
+            if np.isnan(x):
+                return np.nan
+            else:
+                raise ValueError(x)
+        if x == "Male":
+            return 1
+        if x == "Female":
+            return 0
+        raise ValueError(x)
+
+    data.loc[:, "BINNED_SEXE"] = data.loc[:, column_sexe[0]].apply(f)
     printline(f"There are {len(data[data[column_age[0]].isna()])} patients with no age information")
 
 
@@ -80,8 +101,22 @@ def set_severity(data: pd.DataFrame):
     printline(f"There are {len(data[data[column_sev[0]].isna()])} patients with no chir. severity information")
 
 
+def set_morbidite(data: pd.DataFrame):
+    """Will add the column 'MORBIDITE', containing 1 if the patient has at least 2 morbidity factors, 1 if not,
+    and np.nan if unknown"""
+    def f(x: int):
+        if np.isnan(x):
+            return np.nan
+        if x >= 4:
+            return 1
+        return 0
+
+    data.loc[:, "MORBIDITE"] = data.loc[:, column_comor[0]].apply(f)
+    printline(f"There are {len(data[data[column_comor[0]].isna()])} patients no with comorbisity information")
+
+
 def set_fragility(data: pd.DataFrame):
-    """Will add the column 'FRAGILE', containing 1 if the patient has more than 4 fragilities, 1 of not,
+    """Will add the column 'FRAGILE', containing 1 if the patient has more than 4 fragilities, 1 if not,
     and np.nan if unknown"""
 
     def f(x: int):
@@ -92,7 +127,7 @@ def set_fragility(data: pd.DataFrame):
         return 0
 
     data.loc[:, "FRAGILE"] = data.loc[:, column_fragility[0]].apply(f)
-    printline(f"There are {len(data[data[column_fragility[0]].isna()])} patients with fragility information")
+    printline(f"There are {len(data[data[column_fragility[0]].isna()])} patients no with fragility information")
 
 
 def set_prog(data: pd.DataFrame):
@@ -161,10 +196,16 @@ def set_alive(data: pd.DataFrame):
     printline(f"We found an addition of {len(index_alive_from_date)} living patients from their date information")
     data.loc[index_dead_from_date, "ALIVE"] = 0
     data.loc[index_alive_from_date, "ALIVE"] = 1
-    data["DEAD"] = data["ALIVE"].apply(lambda x: 0 if x == 1 else 1)
 
     idx = data.loc[data.loc[:, "ALIVE"].isna().values].index
-    data.loc[idx] = np.nan
+    data.loc[idx, "ALIVE"] = np.nan
+
+    def f(x):
+        if np.isnan(x):
+            return np.nan
+        else:
+            return int(not x)
+    data["DEAD"] = data["ALIVE"].apply(f)
 
     nalive = len(data[data["ALIVE"].apply(lambda x: x == 1)])
     ndead = len(data[data["ALIVE"].apply(lambda x: x == 0)])
@@ -177,8 +218,8 @@ def set_anemia(data: pd.DataFrame):
     HEMOGLOBINE_PREOP lower than 13 will be anaemic, a female patient with HEMOGLOBINE_PREOP lower than 12 will be
     anaemic"""
     data.loc[:, "ANEMIE"] = pd.Series(np.nan, index=data.index)
-    idx_female = data[data[columns_sexe[0]] == "Female"].index
-    idx_male = data[data[columns_sexe[0]] == "Male"].index
+    idx_female = data[data[column_sexe[0]] == "Female"].index
+    idx_male = data[data[column_sexe[0]] == "Male"].index
     anemique_female_index = data.loc[idx_female].loc[(data.loc[idx_female, column_hb[0]] < 12.0).values].index
     not_anemique_female_index = data.loc[idx_female].loc[(data.loc[idx_female, column_hb[0]] >= 12.0).values].index
     anemique_male_index = data.loc[idx_male].loc[(data.loc[idx_male, column_hb[0]] < 13.0).values].index
@@ -223,6 +264,25 @@ def set_dead_or_compl(data: pd.DataFrame):
     idx = data[(data["COMPL"] == 0) & (data["ALIVE"] == 1)].index
     printline(f"There are {len(idx)} patients alive and well")
     data.loc[idx, "DEAD_OR_COMPL"] = 0
+
+
+def set_censure(data: pd.DataFrame):
+    """Will create a new column CENSURE indicating if the death date information is available (1) or not (0)"""
+    data.loc[:, "CENSURE"] = data.loc[:, "DEAD_DAYS"].apply(lambda x: 0 if np.isnan(x) else 1)
+
+
+def drop_for_cox(data: pd.DataFrame):
+    """Will remove patients that have at least one missing explaining feature for COX regression"""
+    to_drop = data[
+        data["BINNED_AGE"].isna()
+        | data["FRAGILE"].isna()
+        | data["SEVERITY"].isna()
+        | data["URGENTE"].isna()
+        | data["IRA"].isna()
+        | data["AG"].isna()
+    ].index
+    data.drop(to_drop, inplace=True)
+    printline(f"There were {len(to_drop)} patients with at least one missing explaining feature")
 
 
 def get_fischer_df(
@@ -277,8 +337,10 @@ def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory):
     """Will call 'fit' with the given dataframe, col_to_test and pdf. Will plot the fit results and add the figure
     to the pdf."""
 
-    patients_male = df[df[columns_sexe[0]] == "Male"][[column_hb[0], col_to_test]]
-    patients_female = df[df[columns_sexe[0]] == "Female"][[column_hb[0], col_to_test]]
+    df = df[~df[col_to_test].isna() & ~df[column_hb[0]].isna()]
+
+    patients_male = df[df[column_sexe[0]] == "Male"][[column_hb[0], col_to_test]]
+    patients_female = df[df[column_sexe[0]] == "Female"][[column_hb[0], col_to_test]]
 
     score_male, predict_male = fit(patients_male, col_to_test)
     score_female, predict_female = fit(patients_female, col_to_test)
@@ -320,18 +382,23 @@ def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory):
 
 
 def format_x(x):
+    """For a given number, will put it in scientific notation if lower than 0.01, using LaTex synthax.
+
+    In addition, if the value is lower than alpha, will change set the color of the value to green.
+    """
     if x > 0.01:
-        return str(round(x, 2))
-    xstr = "{:.4E}".format(x)
-    if "E-" in xstr:
-        lead, tail = xstr.split("E-")
-        middle = "-"
+        xstr = str(round(x, 2))
     else:
-        lead, tail = xstr.split("E")
-        middle = ""
-    while tail.startswith("0"):
-        tail = tail[1:]
-    xstr = ("$\\times 10^{" + middle).join([lead, tail]) + "}$"
+        xstr = "{:.4E}".format(x)
+        if "E-" in xstr:
+            lead, tail = xstr.split("E-")
+            middle = "-"
+        else:
+            lead, tail = xstr.split("E")
+            middle = ""
+        while tail.startswith("0"):
+            tail = tail[1:]
+        xstr = ("$\\times 10^{" + middle).join([lead, tail]) + "}$"
     if x < alpha:
         xstr = "\\textcolor{Green}{" + xstr + "}"
     return xstr
@@ -358,9 +425,7 @@ def fill_cox(data):
     """ Age """
 
     # Dead anaemic
-    df_cox.loc[("", "Total"), ("Mortalité J30", "Anémie")] = len(
-        data[(data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
-    )
+    df_cox.loc[("", "Total"), ("Mortalité J30", "Anémie")] = len(data[(data["ANEMIE"] == 1) & (data["DEAD"] == 1)])
 
     df_cox.loc[("Age", "80-84"), ("Mortalité J30", "Anémie")] = len(
         data[(data["BINNED_AGE"] == 0) & (data["ANEMIE"] == 1) & (data["DEAD"] == 1)]
@@ -388,9 +453,7 @@ def fill_cox(data):
     )
 
     # Complications or dead anaemic
-    df_cox.loc[("", "Total"), ("Complications J30", "Anémie")] = len(
-        data[(data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
-    )
+    df_cox.loc[("", "Total"), ("Complications J30", "Anémie")] = len(data[(data["ANEMIE"] == 1) & (data["COMPL"] == 1)])
 
     df_cox.loc[("Age", "80-84"), ("Complications J30", "Anémie")] = len(
         data[(data["BINNED_AGE"] == 0) & (data["ANEMIE"] == 1) & (data["COMPL"] == 1)]
@@ -602,15 +665,24 @@ def fill_cox(data):
     return df_cox
 
 
+def fit_cox(data: pd.DataFrame):
+    printline(f"There are {len(data)} patients in the COX dataset")
+    data = data[columns_cox]
+    data.loc[:, "DEAD_DAYS"] = data.loc[:, "DEAD_DAYS"].fillna(30)
+    cpf = lifelines.CoxPHFitter()
+    return cpf.fit(data, duration_col="DEAD_DAYS", event_col="CENSURE")
+
+
 alpha = 0.05  # P-value limit
 
-columns_sexe = ["SEXE"]
+column_sexe = ["SEXE"]
 column_age = ["AGE"]
 column_prog = ["Surgery"]
 column_sev = ["Severity.surgery"]
 column_fragility = ["fragilite"]
 column_ag = ["ANESTH.TECH"]
 column_ira = ["IRA"]
+column_comor = ["COMORBIDITES"]
 column_hb = ["HEMOGLOBINE_PREOP"]
 columns_dates = ["DATE.INDUC", "DATE.DEATH"]
 column_alive = ["ALIVE.J30"]
@@ -638,17 +710,34 @@ columns_compl = [
     "NSQ_Organ.space.SSI",
     "NSQ_Systemic.sepsis",
     "NSQ_Uriry.tract.infection",
+    "DEVENIR.STROKE"
 ]
+columns_cox = [
+    "BINNED_AGE",
+    "DEAD_DAYS",
+    "URGENTE",
+    "FRAGILE",
+    "SEVERITY",
+    # "IRA",
+    "AG",
+    "CENSURE",
+    "CGR.bin",
+    "MORBIDITE",
+    "BINNED_SEXE"
+]
+
 all_columns = (
-    column_transf
-    + column_hb
-    + columns_compl
-    + column_alive
-    + columns_sexe
-    + columns_dates
-    + column_age
-    + column_ira
-    + column_ag
-    + column_sev
-    + column_prog
+        column_transf
+        + column_hb
+        + columns_compl
+        + column_alive
+        + column_sexe
+        + columns_dates
+        + column_age
+        + column_ira
+        + column_ag
+        + column_sev
+        + column_prog
+        + column_comor
+        + column_fragility
 )

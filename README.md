@@ -26,7 +26,7 @@ There are **226** patients with no useable information about POST-OP complicatio
 There are **254** patients dead or with at least one POST-OP complication.
 There are **1772** patients alive and well 
 
-There are **226** patients with fragility information 
+There are **226** patients with no fragility information 
 
 There are **226** patients with no age information 
 
@@ -51,14 +51,3 @@ See **tables_hb.pdf** for results.
 Vertical lines are the limit under which a male (13 g/dL) or a female (12 g/dL) patient is considered anaemic.
 
 ### Cox regression
-
-Il n'y a que 39 patients pour lesquels on connait le nombre de jour entre l'opération et le décès.
-
-Variables explicatives :
- * Age
- * Sévérité de la chirurgie
- * Anésthésie : générale ou non
- * type de chirurgie : urgente ou non
- * fragilités : >4 ou non
- * IRA : présent ou non
- * Score ASA (1-5)
