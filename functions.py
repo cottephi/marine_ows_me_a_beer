@@ -20,7 +20,7 @@ def get_data() -> pd.DataFrame:
     print(f"There are {len(data)} patients")
     data = data.replace("OUI", 1)
     data = data.replace("NON", 0)
-    data = data.loc[~data["HEMOGLOBINE_PREOP"].isna().values]
+    data = data.loc[~data[column_hb[0]].isna().values]
     print(f"There are {len(data)} patients with available Hb data")
     return data
 
@@ -37,22 +37,22 @@ def set_alive(data: pd.DataFrame):
     """
     data.loc[:, "ALIVE"] = pd.Series(np.nan, index=data.index)
 
-    alive_yes = data.loc[data["ALIVE.J30"].apply(lambda x: x == 1)].index
-    alive_no = data.loc[data["ALIVE.J30"].apply(lambda x: x == 0)].index
+    alive_yes = data.loc[data[column_alive[0]].apply(lambda x: x == 1)].index
+    alive_no = data.loc[data[column_alive[0]].apply(lambda x: x == 0)].index
 
     print(f"There are {len(alive_yes)} patients that are still alive from ALIVE.J30")
     print(f"There are {len(alive_no)} patients that are dead from ALIVE.J30")
 
     data.loc[alive_yes, "ALIVE"] = 1
     data.loc[alive_no, "ALIVE"] = 0
-    index_dead_from_date = data[(data["DATE.DEATH"] - data["DATE.INDUC"]).apply(lambda x: x.days < 30)].index
+    index_dead_from_date = data[(data[columns_dates[1]] - data[columns_dates[0]]).apply(lambda x: x.days < 30)].index
 
     index_dead_from_date = data.loc[index_dead_from_date][
-        data.loc[index_dead_from_date, "ALIVE.J30"].apply(lambda x: pd.isna(x))
+        data.loc[index_dead_from_date, column_alive[0]].apply(lambda x: pd.isna(x))
     ].index
-    index_alive_from_date = data[(data["DATE.DEATH"] - data["DATE.INDUC"]).apply(lambda x: x.days >= 30)].index
+    index_alive_from_date = data[(data[columns_dates[1]] - data[columns_dates[0]]).apply(lambda x: x.days >= 30)].index
     index_alive_from_date = data.loc[index_alive_from_date][
-        data.loc[index_alive_from_date, "ALIVE.J30"].apply(lambda x: pd.isna(x))
+        data.loc[index_alive_from_date, column_alive[0]].apply(lambda x: pd.isna(x))
     ].index
     print(f"We found an addition of {len(index_dead_from_date)} dead patients from their date information")
     print(f"We found an addition of {len(index_alive_from_date)} living patients from their date information")
@@ -73,7 +73,7 @@ def set_alive(data: pd.DataFrame):
 
 def set_time_of_death(data: pd.DataFrame):
     """Will add the column 'DEAD_DAYS', which is the number of days between the patient induction and death."""
-    data.loc[:, "DEAD_DAYS"] = (data["DATE.DEATH"] - data["DATE.INDUC"]).apply(lambda x: x.days)
+    data.loc[:, "DEAD_DAYS"] = (data[columns_dates[1]] - data[columns_dates[0]]).apply(lambda x: x.days)
 
 
 def set_anemia(data: pd.DataFrame):
@@ -81,10 +81,10 @@ def set_anemia(data: pd.DataFrame):
     HEMOGLOBINE_PREOP lower than 13 will be anaemic, a female patient with HEMOGLOBINE_PREOP lower than 12 will be
     anaemic"""
     data.loc[:, "ANEMIE"] = pd.Series(0, index=data.index)
-    idx_female = data[data["SEXE"] == "Female"].index
-    idx_male = data[data["SEXE"] == "Male"].index
-    anemique_female_index = data.loc[idx_female].loc[(data.loc[idx_female, "HEMOGLOBINE_PREOP"] < 12.0).values].index
-    anemique_male_index = data.loc[idx_male].loc[(data.loc[idx_male, "HEMOGLOBINE_PREOP"] < 13.0).values].index
+    idx_female = data[data[columns_sexe[0]] == "Female"].index
+    idx_male = data[data[columns_sexe[0]] == "Male"].index
+    anemique_female_index = data.loc[idx_female].loc[(data.loc[idx_female, column_hb[0]] < 12.0).values].index
+    anemique_male_index = data.loc[idx_male].loc[(data.loc[idx_male, column_hb[0]] < 13.0).values].index
     print(f"There are {len(anemique_female_index) + len(anemique_male_index)} anaemic patients")
     data.loc[anemique_female_index, "ANEMIE"] = 1
     data.loc[anemique_male_index, "ANEMIE"] = 1
@@ -148,7 +148,7 @@ def fit(data: pd.DataFrame, col_to_test: str) -> Union[Tuple[float, np.ndarray],
 
     If there are not enough data to train the model, returns None and None.
     """
-    x_train, x_test, y_train, y_test = train_test_split(data[["HEMOGLOBINE_PREOP"]], data[col_to_test], train_size=0.9)
+    x_train, x_test, y_train, y_test = train_test_split(data[[column_hb[0]]], data[col_to_test], train_size=0.9)
     if np.count_nonzero(y_train.values) < 2:
         print(f"Not enough data to make a logistic regression on {col_to_test}")
         return None, None
@@ -156,7 +156,7 @@ def fit(data: pd.DataFrame, col_to_test: str) -> Union[Tuple[float, np.ndarray],
     model = LogisticRegression()
     model.fit(x_train, y_train)
     score = round(model.score(x_test, y_test), 3)
-    predict = model.predict_proba(data[["HEMOGLOBINE_PREOP"]].sort_values(by="HEMOGLOBINE_PREOP"))[:, 1]
+    predict = model.predict_proba(data[[column_hb[0]]].sort_values(by=column_hb[0]))[:, 1]
     return score, predict
 
 
@@ -164,8 +164,8 @@ def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory):
     """Will call 'fit' with the given dataframe, col_to_test and pdf. Will plot the fit results and add the figure
     to the pdf."""
 
-    patients_male = df[df["SEXE"] == "Male"][["HEMOGLOBINE_PREOP", col_to_test]]
-    patients_female = df[df["SEXE"] == "Female"][["HEMOGLOBINE_PREOP", col_to_test]]
+    patients_male = df[df[columns_sexe[0]] == "Male"][[column_hb[0], col_to_test]]
+    patients_female = df[df[columns_sexe[0]] == "Female"][[column_hb[0], col_to_test]]
 
     score_male, predict_male = fit(patients_male, col_to_test)
     score_female, predict_female = fit(patients_female, col_to_test)
@@ -173,9 +173,9 @@ def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory):
     if score_male is None or score_female is None:
         return
 
-    ax = patients_male.plot.scatter(x="HEMOGLOBINE_PREOP", y=col_to_test, label="Male", c="blue")
+    ax = patients_male.plot.scatter(x=column_hb[0], y=col_to_test, label="Male", c="blue")
     patients_female.plot.scatter(
-        x="HEMOGLOBINE_PREOP",
+        x=column_hb[0],
         y=col_to_test,
         ax=ax,
         c="orange",
@@ -188,14 +188,14 @@ def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory):
     plt.axvline(13, c="blue")
     plt.axvline(12, c="orange")
     plt.plot(
-        patients_male["HEMOGLOBINE_PREOP"].sort_values(),
+        patients_male[column_hb[0]].sort_values(),
         predict_male,
         ls="--",
         c="blue",
         label=f"Male model\n(score={score_male})",
     )
     plt.plot(
-        patients_female["HEMOGLOBINE_PREOP"].sort_values(),
+        patients_female[column_hb[0]].sort_values(),
         predict_female,
         ls="-.",
         c="orange",
@@ -219,10 +219,12 @@ def format_x(x):
     while tail.startswith("0"):
         tail = tail[1:]
     xstr = ("$\\times 10^{" + middle).join([lead, tail]) + "}$"
-    if x < 0.05:
+    if x < alpha:
         xstr = "\\textcolor{Green}{" + xstr + "}"
     return xstr
 
+
+alpha = 0.05  # P-value limit
 
 columns_sexe = ["SEXE"]
 column_hb = ["HEMOGLOBINE_PREOP"]
