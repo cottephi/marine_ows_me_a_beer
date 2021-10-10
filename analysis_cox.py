@@ -39,6 +39,7 @@ set_censure(patients)
 drop_for_cox(patients)
 
 df_cox = fill_cox(patients)
+print(df_cox.to_string())
 df_cox.to_csv("cox_filled.csv")
 
 patients_date_only = patients[~patients["DEAD_DAYS"].isna()]
@@ -48,10 +49,22 @@ df_cox_date_only.to_csv("cox_date_only_filled.csv")
 
 model = fit_cox(patients)
 
-model.print_summary()
-
 pdf = PdfFactory("cox.pdf")
 
 model.plot()
 pdf.add_figure(plt.gcf())
-pdf.add_table(TableWriter(data=model.summary))
+
+table = model.summary
+table = table.rename(
+    columns={
+        "exp(coef)": "Partial Hazard (ph)",
+        "coef": "Log-partial Hazard (lph)",
+        "se(coef)": "se(ph)",
+        "coef lower 95%": "ph lower 95%",
+        "coef upper 95%": "ph upper 95%",
+        "exp(coef) lower 95%": "lph lower 95%",
+        "exp(coef) upper 95%": "lph upper 95%",
+    }
+)
+
+pdf.add_table(TableWriter(data=table))
