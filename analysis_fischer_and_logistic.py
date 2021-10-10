@@ -5,7 +5,6 @@ from pdffactory import PdfFactory
 from functions import (
     get_data,
     set_alive,
-    set_time_of_death,
     set_anemia,
     set_compl,
     set_dead_or_compl,
@@ -16,7 +15,6 @@ from functions import (
 
 patients = get_data()
 set_alive(patients)
-set_time_of_death(patients)
 set_anemia(patients)
 set_compl(patients)
 set_dead_or_compl(patients)

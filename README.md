@@ -2,27 +2,39 @@
 
 ## Data
 
-There are 2252 patients
+There are **2252** patients 
 
-There are 1445 patients with available Hb data
+There are **1984** patients that are still alive from ALIVE.J30.
+There are **9** patients that are dead from ALIVE.J30.
+There are **259** patients with no ALIVE.J30 information 
 
-There are 1239 patients that are still alive from ALIVE.J30
+We found an addition of **33** dead patients from their date information.
+We found an addition of **0** living patients from their date information 
 
-There are 7 patients that are dead from ALIVE.J30
+Total : **1984** alive, **42** dead, **226** without information 
 
-We found an addition of 32 dead patients from their date information
+There are **2211** patients with no death date information 
 
-We found an addition of 0 living patients from their date information
+There are **544** anaemic patients.
+There are **734** not anaemic patients.
+There are **974** patients without Hb informations 
 
-There are 167 patients with no death information at all. Ignoring them.
+There are **248** patients with at least one POST-OP complication.
+There are **226** patients with no useable information about POST-OP complication 
 
-Total : 1239 alive and 39 dead
+There are **254** patients dead or with at least one POST-OP complication.
+There are **1772** patients alive and well 
 
-There are 544 anaemic patients
+There are **226** patients with fragility information 
 
-There are 215 living patients with at least one POST-OP complication
+There are **226** patients with no age information 
 
-There are 220 patients dead or with at least one POST-OP complication
+There are **226** patients with no General Anaesthesis information 
+
+There are **226** patients with no chir. severity information 
+
+There are **226** patients with information about operation programmation 
+
 
 ## Exact Fischer Test : death/complications vs anemia or transfusion
 
@@ -39,16 +51,13 @@ Vertical lines are the limit under which a male (13 g/dL) or a female (12 g/dL) 
 
 ### Cox regression
 
-Concernant la regression de Cox, l'idée est d'avoir un modèle capable de prédire dans combien de temps va survenir un
-événement à partir de variables explicatives. 
+Il n'y a que 39 patients pour lesquels on connait le nombre de jour entre l'opération et le décès.
 
-Pour entraîner un tel modèle, il faut des variables explicatives (dans notre cas, anémie et fragilités par exemple) et
-la date à laquelle est survenue un événement (dans notre cas, le nombre de jours entre la mort et l'opération,
-ou entre la mort et une complication).
-
-Le problème est que l'on a cette information pour 38 patients seulement (nombre de jours entre la date de décès et la
-date induction), puisque pour les autres on a qu'une information binaire (mort avant 30j ou non). 38 patients c'est 
-trop peu pour un fit je pense, d'autant qu'on veut plusieurs critères explicatifs.
-
-Concernant les complications, je crois bien qu'on a aucune 
-information temporelle.
+Variables explicatives :
+ * Age
+ * Sévérité de la chirurgie
+ * Anésthésie : générale ou non
+ * type de chirurgie : urgente ou non
+ * fragilités : >4 ou non
+ * IRA : présent ou non
+ * Score ASA (1-5)
