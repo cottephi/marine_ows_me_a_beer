@@ -67,7 +67,7 @@ def get_data() -> pd.DataFrame:
     return data
 
 
-def set_alive(data: pd.DataFrame) -> pd.DataFrame:
+def set_alive(data: pd.DataFrame):
     """ Adds the 'ALIVE' column in the dataframe, and the 'DEAD' columns as the opposite of 'ALIVE' (no Schrödinger's
     cat allowed here).
 
@@ -77,7 +77,7 @@ def set_alive(data: pd.DataFrame) -> pd.DataFrame:
 
     Eventually, drops the patients with no living/death information at all.
     """
-    data["ALIVE"] = pd.Series(np.nan, index=data.index)
+    data.loc[:, "ALIVE"] = pd.Series(np.nan, index=data.index)
 
     alive_yes = data.loc[data["ALIVE.J30"].apply(lambda x: x == 1)].index
     alive_no = data.loc[data["ALIVE.J30"].apply(lambda x: x == 0)].index
@@ -102,22 +102,27 @@ def set_alive(data: pd.DataFrame) -> pd.DataFrame:
     data.loc[index_alive_from_date, "ALIVE"] = 1
     data["DEAD"] = data["ALIVE"].apply(lambda x: 0 if x == 1 else 1)
 
-    data2 = data.loc[~data.loc[:, "ALIVE"].isna().values]
+    idx = data.loc[data.loc[:, "ALIVE"].isna().values].index
 
-    print(f"There are {len(data) - len(data2)} patients with no death information at all. Ignoring them.")
+    print(f"There are {len(idx)} patients with no death information at all. Ignoring them.")
+    data.drop(idx, inplace=True)
 
-    nalive = len(data2[data2["ALIVE"].apply(lambda x: x == 1)])
-    ndead = len(data2[data2["ALIVE"].apply(lambda x: x == 0)])
+    nalive = len(data[data["ALIVE"].apply(lambda x: x == 1)])
+    ndead = len(data[data["ALIVE"].apply(lambda x: x == 0)])
 
     print(f"Total : {nalive} alive and {ndead} dead")
-    return data2
 
 
-def set_anemia(data: pd.DataFrame) -> pd.DataFrame:
+def set_time_of_death(data: pd.DataFrame):
+    """Will add the column 'DEAD_DAYS', which is the number of days between the patient induction and death."""
+    data.loc[:, "DEAD_DAYS"] = (data["DATE.DEATH"] - data["DATE.INDUC"]).apply(lambda x: x.days)
+
+
+def set_anemia(data: pd.DataFrame):
     """ Adds the column 'ANEMIE' in the dataframe by looking at the value of 'HEMOGLOBINE_PREOP'. A male patient with
     HEMOGLOBINE_PREOP lower than 13 will be anaemic, a female patient with HEMOGLOBINE_PREOP lower than 12 will be
     anaemic"""
-    data["ANEMIE"] = pd.Series(0, index=data.index)
+    data.loc[:, "ANEMIE"] = pd.Series(0, index=data.index)
     idx_female = data[data["SEXE"] == "Female"].index
     idx_male = data[data["SEXE"] == "Male"].index
     anemique_female_index = data.loc[idx_female].loc[(data.loc[idx_female, "HEMOGLOBINE_PREOP"] < 12.0).values].index
@@ -125,31 +130,28 @@ def set_anemia(data: pd.DataFrame) -> pd.DataFrame:
     print(f"There are {len(anemique_female_index) + len(anemique_male_index)} anaemic patients")
     data.loc[anemique_female_index, "ANEMIE"] = 1
     data.loc[anemique_male_index, "ANEMIE"] = 1
-    return data
 
 
-def set_compl(data: pd.DataFrame) -> pd.DataFrame:
+def set_compl(data: pd.DataFrame):
     """Adds the column 'COMPL' to the dataframe, which will contain 1 if any of the complication specified by
     columns_compl is 1, else 0
 
     Note that the value of 'ALIVE' is not at all taken into account here. A patient with 'COMPL' = 1 can be alive or
     dead, so can a patient with 'COMPL' = 0
     """
-    data["COMPL"] = pd.Series(0, index=data.index)
+    data.loc[:, "COMPL"] = pd.Series(0, index=data.index)
     idx = data[data[columns_compl].any(axis=1)].index
     print(f"There are {len(idx)} patients with at least one POST-OP complication")
     data.loc[idx, "COMPL"] = 1
-    return data
 
 
-def set_dead_or_compl(data: pd.DataFrame) -> pd.DataFrame:
+def set_dead_or_compl(data: pd.DataFrame):
     """Adds the column 'DEAD_OR_COMPL', which contains 1 with the patient has had compliations OR is dead within
      30 days."""
-    data["DEAD_OR_COMPL"] = pd.Series(0, index=data.index)
+    data.loc[:, "DEAD_OR_COMPL"] = pd.Series(0, index=data.index)
     idx = data[(data["COMPL"] == 1) | (data["ALIVE"] == 0)].index
     print(f"There are {len(idx)} patients dead or with at least one POST-OP complication")
     data.loc[idx, "DEAD_OR_COMPL"] = 1
-    return data
 
 
 def get_fischer_df(
@@ -264,7 +266,12 @@ def format_x(x):
     return xstr
 
 
-patients = set_dead_or_compl(set_compl(set_anemia(set_alive(get_data()))))
+patients = get_data()
+set_alive(patients)
+set_time_of_death(patients)
+set_anemia(patients)
+set_compl(patients)
+set_dead_or_compl(patients)
 
 df_pvalues_anemia = pd.DataFrame(columns=["One-tail P-value", "Two-tail P-value"])
 df_pvalues_anemia.index.name = "vs Anemia"
@@ -281,7 +288,13 @@ Fisher Exact Tests
 get_fischer_df(patients, df_pvalues_anemia, "ANEMIE", "DEAD", ["Anaemic", "Not Anaemic"], ["Dead", "Alive"], pdf_anemia)
 # Dead vs Transfusion
 get_fischer_df(
-    patients, df_pvalues_transfu, column_transf[0], "DEAD", ["Transfusion", "No Transfusion"], ["Dead", "Alive"], pdf_transfu
+    patients,
+    df_pvalues_transfu,
+    column_transf[0],
+    "DEAD",
+    ["Transfusion", "No Transfusion"],
+    ["Dead", "Alive"],
+    pdf_transfu,
 )
 
 # Complications vs Anemia
@@ -329,13 +342,7 @@ get_fischer_df(
 for compl in columns_compl:
     # One complication vs Anemia
     get_fischer_df(
-        patients,
-        df_pvalues_anemia,
-        "ANEMIE",
-        compl,
-        ["Anaemic", "Not Anaemic"],
-        [compl, f"No {compl}"],
-        pdf_anemia
+        patients, df_pvalues_anemia, "ANEMIE", compl, ["Anaemic", "Not Anaemic"], [compl, f"No {compl}"], pdf_anemia
     )
     # One complication vs Transfusion
     get_fischer_df(
