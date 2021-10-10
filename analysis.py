@@ -152,25 +152,32 @@ def set_dead_or_compl(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 
-def get_fischer_df(data: pd.DataFrame, pvals: pd.DataFrame, col_to_test: str, names: List[str], pdf_: PdfFactory):
-    """Deas the Fischer Exact Test of col_to_test vs Anaemic, saves its pvalues in pvals, and fills the pdf object
+def get_fischer_df(
+    data: pd.DataFrame,
+    pvals: pd.DataFrame,
+    col_x: str,
+    col_y: str,
+    index_names: List[str],
+    column_names: List[str],
+    pdf_: PdfFactory,
+):
+    """Deas the Fischer Exact Test of col_y vs col_x, saves its pvalues in pvals, and fills the pdf object
     with the table used for the test.
     """
-    fischer = pd.DataFrame(columns=names, index=["Anaemic", "Not Anaemic"])
-    fischer.loc["Not Anaemic", names[1]] = len(data.loc[((data[col_to_test] == 0) & (data["ANEMIE"] == 0)).values])
-    fischer.loc["Anaemic", names[1]] = len(data.loc[((data[col_to_test] == 0) & (data["ANEMIE"] == 1)).values])
-    fischer.loc["Anaemic", names[0]] = len(data.loc[((data[col_to_test] == 1) & (data["ANEMIE"] == 1)).values])
-    fischer.loc["Not Anaemic", names[0]] = len(data.loc[((data[col_to_test] == 1) & (data["ANEMIE"] == 0)).values])
+    fischer = pd.DataFrame(columns=column_names, index=index_names)
+    fischer.loc[index_names[1], column_names[1]] = len(data.loc[((data[col_y] == 0) & (data[col_x] == 0)).values])
+    fischer.loc[index_names[0], column_names[1]] = len(data.loc[((data[col_y] == 0) & (data[col_x] == 1)).values])
+    fischer.loc[index_names[0], column_names[0]] = len(data.loc[((data[col_y] == 1) & (data[col_x] == 1)).values])
+    fischer.loc[index_names[1], column_names[0]] = len(data.loc[((data[col_y] == 1) & (data[col_x] == 0)).values])
 
     print(fischer)
 
     pdf_.add_table(TableWriter(data=fischer))
 
     onetail_p, twotail_p = stats.fisher_exact(fischer)
-    pvals.loc[names[0]] = [onetail_p, twotail_p]
+    pvals.loc[index_names[0]] = [onetail_p, twotail_p]
 
-    print(
-        f"Fischer Exact Test of {col_to_test} vs Anemia : One tail P-value: {onetail_p}. Two-tail P-value {twotail_p}")
+    print(f"Fischer Exact Test of {col_y} vs {col_x} : One tail P-value: {onetail_p}. Two-tail P-value {twotail_p}")
 
 
 def fit(data: pd.DataFrame, col_to_test: str) -> Union[Tuple[float, np.ndarray], Tuple[None, None]]:
@@ -216,7 +223,7 @@ def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory):
         marker="x",
         ylabel="ok                not ok",
         xlabel="Hb (g/dL)",
-        title=f"{col_to_test} vs Hb"
+        title=f"{col_to_test} vs Hb",
     )
     plt.axvline(13, c="blue")
     plt.axvline(12, c="orange")
@@ -242,7 +249,7 @@ def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory):
 def format_x(x):
     if x > 0.01:
         return str(round(x, 2))
-    xstr = '{:.4E}'.format(x)
+    xstr = "{:.4E}".format(x)
     lead, tail = xstr.split("E-")
     while tail.startswith("0"):
         tail = tail[1:]
@@ -256,43 +263,102 @@ patients = set_dead_or_compl(set_compl(set_anemia(set_alive(get_data()))))
 
 df_pvalues = pd.DataFrame(columns=["One-tail P-value", "Two-tail P-value"])
 df_pvalues.index.name = "vs Anemia"
-pdf = PdfFactory("tables.pdf")
+pdf_anemia = PdfFactory("tables_hb.pdf")
+pdf_transfu = PdfFactory("tables_transfu.pdf")
 
 """
 Fisher Exact Tests
 """
 
-# Alive vs Anemia
-get_fischer_df(patients, df_pvalues, "DEAD", ["Dead", "Alive"], pdf)
+# Dead vs Anemia
+get_fischer_df(patients, df_pvalues, "ANEMIE", "DEAD", ["Anaemic", "Not Anaemic"], ["Dead", "Alive"], pdf_anemia)
+# Dead vs Transfusion
+get_fischer_df(
+    patients, df_pvalues, column_transf[0], "DEAD", ["Transfusion", "No Transfusion"], ["Dead", "Alive"], pdf_transfu
+)
 
 # Complications vs Anemia
-get_fischer_df(patients, df_pvalues, "COMPL", ["Complications", "No complications"], pdf)
+get_fischer_df(
+    patients,
+    df_pvalues,
+    "ANEMIE",
+    "COMPL",
+    ["Anaemic", "Not Anaemic"],
+    ["Complications", "No complications"],
+    pdf_anemia,
+)
+# Complications vs Transfusion
+get_fischer_df(
+    patients,
+    df_pvalues,
+    column_transf[0],
+    "COMPL",
+    ["Transfusion", "No Transfusion"],
+    ["Complications", "No complications"],
+    pdf_transfu,
+)
 
 # Dead or Complications vs Anemia
-get_fischer_df(patients, df_pvalues, "DEAD_OR_COMPL", ["Complications or death", "Alive and well"], pdf)
+get_fischer_df(
+    patients,
+    df_pvalues,
+    "ANEMIE",
+    "DEAD_OR_COMPL",
+    ["Anaemic", "Not Anaemic"],
+    ["Complications or death", "Alive and well"],
+    pdf_anemia,
+)
+# Dead or Complications vs Transfusion
+get_fischer_df(
+    patients,
+    df_pvalues,
+    column_transf[0],
+    "DEAD_OR_COMPL",
+    ["Transfusion", "No Transfusion"],
+    ["Complications or death", "Alive and well"],
+    pdf_transfu,
+)
 
-# One complication vs Anemia
 for compl in columns_compl:
-    get_fischer_df(patients, df_pvalues, compl, [compl, f"No {compl}"], pdf)
+    # One complication vs Anemia
+    get_fischer_df(
+        patients,
+        df_pvalues,
+        "ANEMIE",
+        compl,
+        ["Anaemic", "Not Anaemic"],
+        [compl, f"No {compl}"],
+        pdf_anemia
+    )
+    # One complication vs Transfusion
+    get_fischer_df(
+        patients,
+        df_pvalues,
+        column_transf[0],
+        compl,
+        ["Transfusion", "No Transfusion"],
+        [compl, f"No {compl}"],
+        pdf_transfu,
+    )
 
 df_pvalues = df_pvalues.applymap(format_x).astype(str)
 writer = TableWriter("table.pdf", data=df_pvalues)
 
-pdf.add_table(writer)
+pdf_anemia.add_table(writer)
 
 """
 Logistic Regressions
 """
 
 # Alive vs Anemia
-make_logistic(patients, "DEAD", pdf)
+make_logistic(patients, "DEAD", pdf_anemia)
 
 # Complications vs Anemia
-make_logistic(patients, "COMPL", pdf)
+make_logistic(patients, "COMPL", pdf_anemia)
 
 # Dead or Complications vs Anemia
-make_logistic(patients, "DEAD_OR_COMPL", pdf)
+make_logistic(patients, "DEAD_OR_COMPL", pdf_anemia)
 
 # One complication vs Anemia
 for compl in columns_compl:
-    make_logistic(patients, compl, pdf)
+    make_logistic(patients, compl, pdf_anemia)
