@@ -1,5 +1,22 @@
 # Marine ows me a beer
 
+## To do next
+
+J'ai fait les analyses de fischer (**tables_hb.pdf** et **tables_transfu.pdf** produits par analyse_fischer.py), rien de plus à faire là dessus.
+
+Les regressions log sont dans les mêmes fichiers, mais n'ont donné aucun resultat probant
+
+J'ai codé l'analyse de Cox, qui fonctionne, mais qui ne répond pas à la problématique pour le moment. En effet, elle utilise tous les patients d'un coup,
+alors que Marine aimerait les séparer en deux groupes : anémiques et pas anémiques.
+La colonne "ANEMIE" du dataframe **patients** dans analyse_cox.py permet de faire ça.
+
+De plus, il faudrait voir si il existe une méthode d'analyse plus pertinente pour nos données que l'analyse de Cox, plus adaptée aux 
+variables explicatives continues alors que les notres sont discrètes.
+
+Enfin, sur l'analyse de Cox, il faudra revoir la méthode de Censure. En effet, j'ai censuré à 30j tous les patients dont on n'a aucune info
+sur la date de décès, alors que parmis ces patients il y en a que l'on sait morts (on ne sait juste pas quand ils sont morts), alors que d'autres sont
+vivant, et d'autre encore pour lesquels on ne sait rien.
+
 ## Data
 
 There are **2252** patients 
