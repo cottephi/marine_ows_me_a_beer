@@ -36,7 +36,7 @@ library(FactoMineR)
 library(factoextra)
 
 data_acm <- data[,1:72]
-res.acm <- MCA(data_acm, graph=F, ncp=2) # deux axes => deux critères composites
+res.acm <- MCA(data, graph=F, ncp=2, quali.sup = 73) # deux axes => deux critères composites
 
 ## On ajoute à chaque individu ses coordonnées sur le plan factoriel
 
@@ -44,3 +44,28 @@ data$x1 <- res.acm$ind$coord[,1]
 data$x2 <- res.acm$ind$coord[,2]
 
 ## Il faut maintenant mener une analyse discriminante sur ces coordonnées par rapport à la variable anémie
+
+library(corrplot)
+library(DiscriMiner)
+
+res.adisc <- desDA(data.frame(data$x1, data$x2), data$Anemia)
+res.pow <- as.data.frame(res.adisc$power)
+
+plot(data$x1, data$x2, col=1+(data$Anemia=='OUI')) 
+# Les deux groupes ne semblent pas se démarquer
+plot(res.adisc$scores, col=1+(data$Anemia=='OUI')) 
+# Même remarque
+
+boxplot(res.adisc$scores~data$Anemia)
+model <- aov(res.adisc$scores~data$Anemia)
+summary(model)
+# Le test d'indépendance de Fisher sous-jacent à l'ANOVA détecte un effet.
+
+shapiro.test(model$residuals)
+# Les résidus sont loin de suivre une loi normale, ce qui réduit la crédibilité du modèle de l'ANOVA.
+bartlett.test(res.adisc$scores~data$Anemia)
+# Les variances sont loin d'être égales. La crédibilité du modèle de l'ANOVA prend encore un coup.
+
+
+# Il doit y avoir trop de variables non-discriminantes. On peut regardes lesquelles contribuent le plus à la construction du premier axe factoriel et ne conserver que les plus fortes.
+
