@@ -112,7 +112,7 @@ def set_morbidite(data: pd.DataFrame):
         return 0
 
     data.loc[:, "MORBIDITE"] = data.loc[:, column_comor[0]].apply(f)
-    printline(f"There are {len(data[data[column_comor[0]].isna()])} patients no with comorbisity information")
+    printline(f"There are {len(data[data[column_comor[0]].isna()])} patients with no comorbisity information")
 
 
 def set_fragility(data: pd.DataFrame):
@@ -127,7 +127,7 @@ def set_fragility(data: pd.DataFrame):
         return 0
 
     data.loc[:, "FRAGILE"] = data.loc[:, column_fragility[0]].apply(f)
-    printline(f"There are {len(data[data[column_fragility[0]].isna()])} patients no with fragility information")
+    printline(f"There are {len(data[data[column_fragility[0]].isna()])} patients with no fragility information")
 
 
 def set_prog(data: pd.DataFrame):
@@ -327,54 +327,63 @@ def fit(data: pd.DataFrame, col_to_test: str) -> Union[Tuple[float, np.ndarray],
         return None, None
 
     model = LogisticRegression()
-    model.fit(x_train, y_train)
-    score = round(model.score(x_test, y_test), 3)
+    model.fit(x_train, y_train.astype(bool))
+    score = round(model.score(x_test, y_test.astype(bool)), 3)
     predict = model.predict_proba(data[[column_hb[0]]].sort_values(by=column_hb[0]))[:, 1]
     return score, predict
 
 
-def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory):
+def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory, split_on="MF"):
     """Will call 'fit' with the given dataframe, col_to_test and pdf. Will plot the fit results and add the figure
     to the pdf."""
 
     df = df[~df[col_to_test].isna() & ~df[column_hb[0]].isna()]
 
-    patients_male = df[df[column_sexe[0]] == "Male"][[column_hb[0], col_to_test]]
-    patients_female = df[df[column_sexe[0]] == "Female"][[column_hb[0], col_to_test]]
+    if split_on == "MF":
+        patients_cat1 = df[df[column_sexe[0]] == "Male"][[column_hb[0], col_to_test]]
+        patients_cat2 = df[df[column_sexe[0]] == "Female"][[column_hb[0], col_to_test]]
+        labels = ["Male", "Female"]
+    elif split_on in df.columns:
+        patients_cat1 = df[df[split_on] == 1][[column_hb[0], col_to_test]]
+        patients_cat2 = df[df[split_on] == 0][[column_hb[0], col_to_test]]
+        labels = [split_on, f"Not {split_on}"]
+    else:
+        raise ValueError(f"Invalid value {split_on} for split_on")
 
-    score_male, predict_male = fit(patients_male, col_to_test)
-    score_female, predict_female = fit(patients_female, col_to_test)
+    score_cat1, predict_cat1 = fit(patients_cat1, col_to_test)
+    score_cat2, predict_cat2 = fit(patients_cat2, col_to_test)
 
-    if score_male is None or score_female is None:
+    if score_cat1 is None or score_cat2 is None:
         return
 
-    ax = patients_male.plot.scatter(x=column_hb[0], y=col_to_test, label="Male", c="blue")
-    patients_female.plot.scatter(
+    ax = patients_cat1.plot.scatter(x=column_hb[0], y=col_to_test, label=labels[0], c="blue")
+    patients_cat2.plot.scatter(
         x=column_hb[0],
         y=col_to_test,
         ax=ax,
         c="orange",
-        label="Female",
+        label=labels[1],
         marker="x",
         ylabel="ok                not ok",
         xlabel="Hb (g/dL)",
         title=f"{col_to_test} vs Hb",
     )
-    plt.axvline(13, c="blue")
-    plt.axvline(12, c="orange")
+    if split_on == "MF":
+        plt.axvline(13, c="blue")
+        plt.axvline(12, c="orange")
     plt.plot(
-        patients_male[column_hb[0]].sort_values(),
-        predict_male,
+        patients_cat1[column_hb[0]].sort_values(),
+        predict_cat1,
         ls="--",
         c="blue",
-        label=f"Male model\n(score={score_male})",
+        label=f"{labels[0]} model\n(score={score_cat1})",
     )
     plt.plot(
-        patients_female[column_hb[0]].sort_values(),
-        predict_female,
+        patients_cat2[column_hb[0]].sort_values(),
+        predict_cat2,
         ls="-.",
         c="orange",
-        label=f"Female model\n(score={score_female})",
+        label=f"{labels[1]} model\n(score={score_cat2})",
     )
     plt.legend(loc="right")
     pdf_.add_figure(plt.gcf())

@@ -7,6 +7,7 @@ from functions import (
     set_alive,
     set_anemia,
     set_compl,
+    set_fragility,
     set_dead_or_compl,
     get_fischer_df,
     make_logistic,
@@ -17,7 +18,10 @@ patients = get_data()
 set_alive(patients)
 set_anemia(patients)
 set_compl(patients)
+set_fragility(patients)
 set_dead_or_compl(patients)
+
+patients = patients.T.drop_duplicates().T
 
 df_pvalues_anemia = pd.DataFrame(columns=["One-tail P-value", "Two-tail P-value"])
 df_pvalues_anemia.index.name = "vs Anemia"
@@ -108,7 +112,7 @@ pdf_anemia.add_table(TableWriter(data=df_pvalues_anemia))
 pdf_transfu.add_table(TableWriter(data=df_pvalues_transfu))
 
 """
-Logistic Regressions
+Logistic Regressions Male / Female
 """
 
 # Alive vs Anemia
@@ -123,3 +127,20 @@ make_logistic(patients, "DEAD_OR_COMPL", pdf_anemia)
 # One complication vs Anemia
 for compl in columns_compl:
     make_logistic(patients, compl, pdf_anemia)
+
+"""
+Logistic Regressions Fragilite
+"""
+
+# Alive vs Anemia
+make_logistic(patients, "DEAD", pdf_anemia, "FRAGILE")
+
+# Complications vs Anemia
+make_logistic(patients, "COMPL", pdf_anemia, "FRAGILE")
+
+# Dead or Complications vs Anemia
+make_logistic(patients, "DEAD_OR_COMPL", pdf_anemia, "FRAGILE")
+
+# One complication vs Anemia
+for compl in columns_compl:
+    make_logistic(patients, compl, pdf_anemia, "FRAGILE")
