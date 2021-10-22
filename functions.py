@@ -369,8 +369,11 @@ def make_logistic(df: pd.DataFrame, col_to_test: str, pdf_: PdfFactory, split_on
         title=f"{col_to_test} vs Hb",
     )
     if split_on == "MF":
-        plt.axvline(13, c="blue")
-        plt.axvline(12, c="orange")
+        plt.axvline(13, c="blue", ls=":")
+        plt.axvline(12, c="orange", ls=":")
+    else:
+        plt.axvline(13, c="red", ls=":")
+        plt.axvline(12, c="purple", ls=":")
     plt.plot(
         patients_cat1[column_hb[0]].sort_values(),
         predict_cat1,
